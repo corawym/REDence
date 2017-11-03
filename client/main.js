@@ -7,7 +7,6 @@ import { Meteor } from 'meteor/meteor'
 const  REDance = () => (
   <div>
     <Routes/>
-    <h1> fjhgjdfhg </h1>
   </div>
 )
 
