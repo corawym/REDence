@@ -26,10 +26,10 @@ export default class Login extends Component {
     return (
       <div className='login-container'>
         <Paper style={style} zDepth={4}>
-          <form onSubmit={login} autoComplete='off'>
-            <StyledTextField hintText="Email" label='lol' className='text-field'/>
+          <form autoComplete='off'>
+            <StyledTextField hintText="Email" label='email' className='text-field'/>
             <br/>
-            <StyledTextField hintText="Password" />
+            <StyledTextField hintText="Password" label='password' />
 
             <Link to={`/signup`} className='links'>
               <a> Forgot password? </a>
@@ -46,6 +46,3 @@ export default class Login extends Component {
     )
   }
 }
-
-
-
