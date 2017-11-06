@@ -1,6 +1,6 @@
-import { Mongo } from 'meteor/mongo';
+import { Mongo } from 'meteor/mongo'
 
-export const Programs = new Mongo.Collection('program');
+export const Programs = new Mongo.Collection('program')
 
 
 // if ( Meteor.isServer ) {
