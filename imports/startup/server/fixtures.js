@@ -3,11 +3,16 @@ import { Programs } from '../../api/program'
 import { Teachers } from '../../api/teacher'
 import { Students } from '../../api/student'
 import { Messages } from '../../api/messages'
+import { Attendance } from '../../api/attendance'
 
 import { Accounts } from 'meteor/accounts-base'
 
 Meteor.startup(() => {
   let user = {}
+  let student1=''
+  let student2=''
+  let student3=''
+  let program1=''
 
   // if( Meteor.users.find().count() == 0 ){
   //   teacher = Accounts.createUser({
@@ -20,7 +25,7 @@ Meteor.startup(() => {
 
   if (Programs.find().count() === 0){
 
-    Programs.insert({ 
+    program1 = Programs.insert({ 
       title: "Web Dev"
      })
 
@@ -28,17 +33,17 @@ Meteor.startup(() => {
       title: "App Dev"
      })
 
-    //  Programs.insert({ 
-    //   title: "UX Design"
-    //  })
+     Programs.insert({ 
+      title: "UX Design"
+     })
 
-    //  Programs.insert({ 
-    //   title: "UI Design"
-    //  })
+     Programs.insert({ 
+      title: "UI Design"
+     })
 
-    //  Programs.insert({ 
-    //   title: "Digital Marketing"
-    //  })
+     Programs.insert({ 
+      title: "Digital Marketing"
+     })
   }
 
   if (Teachers.find().count() === 0 ){
@@ -48,7 +53,7 @@ Meteor.startup(() => {
       email: 'mack@email.com',
       role: 'teacher',
       programs: [
-        Programs.find({ title: 'Web Dev', title: 'App Dev' })
+        Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
       ]
      })
 
@@ -57,44 +62,27 @@ Meteor.startup(() => {
       email: 'mandi@email.com',
       role: 'teacher',
       programs: [
-        Programs.find({ title: 'Web Dev', title: 'App Dev' })
+        Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
       ]
      })
-
-    //  Teachers.insert({
-    //   fullName: 'Mackenzie Keiran',
-    //   email: 'mack@email.com',
-    //   role: 'teacher',
-    //   programs: [
-    //     Programs.find({ title: 'Web Dev', title: 'App Dev' })
-    //   ]
-    //  })
-
-    //  Teachers.insert({
-    //   fullName: 'Mackenzie Keiran',
-    //   email: 'mack@email.com',
-    //   role: 'teacher',
-    //   programs: [
-    //     Programs.find({ title: 'Web Dev', title: 'App Dev' })
-    //   ]
-    //  })
   } 
 
   if(Students.find().count() === 0){
 
-    Students.insert({
-      fullName: 'Bobby Soetarty',
-      program: Programs.find({ title: 'App Dev' }),
-      email: 'bobby@email.com',
-      missedDates: ['03-11-2017', '01-11-2017','26-10-2017'],
-      lateDates: ['06-10-2017','10-10-2017'],
-      sickDays: ['11-10-2017'],
-      total: 90
-    })
+    student1 = Students.insert({
+        fullName: 'Bobby Soetarty',
+        program: Programs.find({ title: 'App Dev' }).fetch(),
+        email: 'bobby@email.com',
+        missedDates: ['03-11-2017', '01-11-2017','26-10-2017'],
+        lateDates: ['06-10-2017','10-10-2017'],
+        sickDays: ['11-10-2017'],
+        total: 90
+      })
 
-    Students.insert({
+
+    student2 = Students.insert({
       fullName: 'Cora Wongy',
-      program: Programs.find({ title: 'App Dev' }),
+      program: Programs.find({ title: 'App Dev' }).fetch(),
       email: 'cora@email.com',
       missedDates: ['02-11-2017', '07-10-2017','25-10-2017'],
       lateDates: ['09-10-2017','11-10-2017'],
@@ -102,9 +90,9 @@ Meteor.startup(() => {
       total: 90
     })
 
-    Students.insert({
+    student3= Students.insert({
       fullName: 'Mark Cooly',
-      program: Programs.find({ title: 'App Dev' }),
+      program: Programs.find({ title: 'App Dev' }).fetch(),
       email: 'mark@email.com',
       missedDates: ['01-11-2017', '08-10-2017','21-10-2017'],
       lateDates: ['04-10-2017','16-10-2017'],
@@ -118,25 +106,46 @@ Meteor.startup(() => {
 
     Messages.insert({
       message: 'BOBBY IS NAT KEEEWL',
-      sender: Students.find({ email: 'bobby@email.com' }),
+      sender: Students.find({ email: 'bobby@email.com' }).fetch(),
       receiver: [
-        Teachers.find({ program: 'App Dev' })
+        Teachers.find({ program: 'App Dev' }).fetch()
       ]
     })
 
     Messages.insert({
       message: 'CORA LOOOOVES DOGS',
-      sender: Students.find({ email: 'cora@email.com' }),
+      sender: Students.find({ email: 'cora@email.com' }).fetch(),
       receiver: [
-        Teachers.find({ program: 'App Dev' })
+        Teachers.find({ program: 'App Dev' }).fetch()
       ]
     })
 
     Messages.insert({
       message: 'MARK HAS TOO MANY LATES',
-      sender: Students.find({ email: 'mark@email.com' }),
+      sender: Students.find({ email: 'mark@email.com' }).fetch(),
       receiver: [
-        Teachers.find({ program: 'App Dev' })
+        Teachers.find({ program: 'App Dev' }).fetch()
+      ]
+    })
+
+  }
+  if(Attendance.find().count() === 0){
+    Attendance.insert({
+      date: Date(),
+      program: program1,
+      students:[
+        {
+          id: student1,
+          status:'present'
+        },
+        {
+          id:student2,
+          status:'late'
+        },
+        {
+          id:student3,
+          status:'absent'
+        }
       ]
     })
   }
