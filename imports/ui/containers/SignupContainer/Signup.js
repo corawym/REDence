@@ -1,20 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import {Tabs, Tab} from 'material-ui/Tabs'
 import RaisedButton from 'material-ui/RaisedButton'
+
 import './styles.css'
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-}
-
-const RBstyle = {
-  margin: 12,
-};
+import StyledTextField from '../../components/TextField/TextField'
 
 export default class Signup extends Component {
 
@@ -39,25 +30,38 @@ export default class Signup extends Component {
         onChange={this.handleChange}
         className='signup-tabs'
       >
-        <Tab label="Tab A" value="a">
-          <div className='form-container'>
-            <h2 style={styles.headline}>Controllable Tab A</h2>
-            <p>
-              Tabs are also controllable if you want to programmatically pass them their values.
-              This allows for more functionality in Tabs such as not
-              having any Tab selected or assigning them different values.
-            </p>
-          </div>
+        <Tab label="Student" value="a" className='tab-container'>
+          <StyledTextField hintText="Email" label='email' className='text-field'/>
+            <br/>
+          <StyledTextField hintText="Password" label='password' />
+
+          <Link to={`/signup`} className='links'>
+            <a> Forgot password? </a>
+          </Link>
+
+          <RaisedButton label='Sign up' primary={true} style={{ width: '95%' }}/>
+
+          <Link to={`/signup`} className='links'>
+            <a> New user? </a>
+          </Link>
         </Tab>
-        <Tab label="Tab B" value="b">
-          <div className='form-container'>
-            <h2 style={styles.headline}>Controllable Tab B</h2>
-            <p>
-              This is another example of a controllable tab. Remember, if you
-              use controllable Tabs, you need to give all of your tabs values or else
-              you wont be able to select them.
-            </p>
-          </div>
+
+        <Tab label="Teacher" value="b" className='tab-container'>
+          <StyledTextField hintText="Email" label='email' className='text-field'/>
+            <br/>
+          <StyledTextField hintText="Password" label='password' />
+          <p> Teacher Code </p>
+          <StyledTextField hintText="Code" label='password' />
+
+          <Link to={`/signup`} className='links'>
+            <a> Forgot password? </a>
+          </Link>
+
+          <RaisedButton label='Sign up' primary={true} style={{ width: '95%' }}/>
+
+          <Link to={`/signup`} className='links'>
+            <a> New user? </a>
+          </Link>
         </Tab>
       </Tabs>
     )
