@@ -7,8 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import './styles.css'
 import StyledTextField from '../../components/TextField/TextField'
 
-
-
 const style = {
   margin: '0 auto',
   marginTop: '40%',
@@ -22,24 +20,26 @@ const style = {
 
 export default class Login extends Component {
 
+
+  logIn(e){
+    e.preventDefault()
+  console.log('lol')
+  }
+
   render() {
     return (
       <div className='login-container'>
         <Paper style={style} zDepth={4}>
-          <form autoComplete='off'>
-            <StyledTextField hintText="Email" label='email' className='text-field'/>
+          <form autoComplete='off' onSubmit={this.logIn}>
+            <StyledTextField hintText="Email" label='email' className='text-field' />
             <br/>
             <StyledTextField hintText="Password" label='password' />
 
-            <Link to={`/signup`} className='links'>
-              <a> Forgot password? </a>
-            </Link>
+            <Link to={`/signup`} className='links'> Forgot password? </Link>
 
-            <RaisedButton label='Log in' primary={true} style={{ width: '95%' }}/>
+            <RaisedButton type='submit' label='Log in' primary={true} style={{ width: '95%' }} />
 
-            <Link to={`/signup`} className='links'>
-              <a> New user? </a>
-            </Link>
+            <Link to={`/signup`} className='links'> New user? </Link>
           </form>
         </Paper>
       </div>
