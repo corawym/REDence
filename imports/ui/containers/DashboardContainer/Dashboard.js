@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import TeacherDasboard from '../../components/Teacher/TeacherDashboard'
+import TeacherDashboard from '../../components/Teacher/TeacherDashboard'
+import { StudentDashboard } from '../../components/Student'
 
 export default class Dashboard extends Component {
   handleChange(e,id){
@@ -8,11 +9,13 @@ export default class Dashboard extends Component {
   submitAttendance(){
     console.log("submit");
   }
+  
   render() {
-    const data=[{id:'1', fullname:'John Smith', markedAs:'late'}]
+    // const data=[{id:'1', fullname:'John Smith', markedAs:'late'}]
     return (
       <section>
-        <TeacherDasboard data={data} handleChange={this.handleChange} submitAttendance={this.submitAttendance}/>
+        {/*<TeacherDasboard data={data} handleChange={this.handleChange} submitAttendance={this.submitAttendance}/>*/}
+        <StudentDashboard />
       </section>
     )
   }
