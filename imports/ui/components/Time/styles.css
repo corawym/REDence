@@ -1,0 +1,25 @@
+.dash-time-wrapper{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.dash-today-time{
+  font-size: 3.5rem;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.dash-today-time span{
+  font-size: 2.5rem;
+}
+
+.dash-today-date{
+  font-size: 1.7rem;
+  margin-top: 1rem;
+}
+
+.dash-time-date{
+  color: #313131;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
