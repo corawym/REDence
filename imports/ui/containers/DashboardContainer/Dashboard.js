@@ -9,6 +9,8 @@ import { TeacherDashboard } from '../../components/Teacher/TeacherDashboard'
 import { StudentDashboard } from '../../components/Student'
 import moment from 'moment'
 
+import './styles.css'
+
 class Dashboard extends Component {
   handleClick(e,id){
     console.log(e.target.value, id)
@@ -43,7 +45,7 @@ class Dashboard extends Component {
   getTotalAttendancePercent(studentInfo){
     if(studentInfo){
       const totalAttendance = studentInfo.total - studentInfo.missedDates.length - (studentInfo.lateDates.length/2)
-      const totalAttendancePercent = totalAttendance / studentInfo.total * 100
+      const totalAttendancePercent = Math.round(totalAttendance / studentInfo.total * 100)
       return totalAttendancePercent
     }
 
@@ -69,7 +71,7 @@ class Dashboard extends Component {
 
 
     return (
-      <section>
+      <section className="dashboard">
         <DashTime />
         { studentInfo ? <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} /> : false }
         {/*<TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendance}/>*/}

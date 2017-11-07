@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
-  // console.log(studentInfo);
   
   return(
     <div className="student-info-wrapper">
@@ -15,24 +14,24 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
       <div className="student-stat-wrapper">
         <div>
           <h3>total attendance</h3>
-          <h4>{totalAttendancePercent}</h4>
+          <p>{totalAttendancePercent}%</p>
           <p>Over 90% to pass</p>
         </div>
         <div>
           <h3>total school days</h3>
-          <h4>{studentInfo.total}</h4>
+          <p>{studentInfo.total}</p>
         </div>
         <div>
           <h3>absence</h3>
-          <h4>{studentInfo.missedDates.length}</h4>
+          <p>{studentInfo.missedDates.length}</p>
         </div>
         <div>
           <h3>late</h3>
-          <h4>{studentInfo.lateDates.length}</h4>
+          <p>{studentInfo.lateDates.length}</p>
         </div>
         <div>
           <h3>exception</h3>
-          <h4>{studentInfo.sickDays.length}</h4>
+          <p>{studentInfo.sickDays.length}</p>
         </div>
       </div>
       
