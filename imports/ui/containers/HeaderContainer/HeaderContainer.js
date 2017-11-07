@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 
 import { Header } from '../../components/Header'
 
-class Header extends Component {
-  state = {  }
+class HeaderContainer extends Component {
+
   render() {
+    
     return (
-      <Header />
+      <div>
+        hi
+        <Header />
+      </div>
     )
   }
 }
 
-export default Header
+export default HeaderContainer
