@@ -17,16 +17,28 @@ class Dashboard extends Component {
     console.log("submit");
   }
   getAttendance(allAttendance, allStudents){
-   return data = allStudents.map((student)=>{
-     return{
-       ...student,
-       status: allAttendance[0].students.find(studentAtt =>{
-         if(student._id === studentAtt.id){
-           return studentAtt.status
-         }
-       })
-     }
-   })
+    if(allAttendance.length>0){
+      return data = allStudents.map((student)=>{
+        return{
+          ...student,
+          status: allAttendance[0].students.find(studentAtt =>{
+            if(student._id === studentAtt.id){
+              return studentAtt.status
+            }
+          })
+        }
+      })
+    }else{
+      return data = allStudents.map((student)=>{
+        return {
+          ...student,
+          status:{
+            id:student._id,
+            status:null
+          }
+        }
+      })
+    }
   }
   render() {
     const data=[{id:'1', fullname:'John Smith'}]
@@ -37,15 +49,12 @@ class Dashboard extends Component {
       }
     })
     let studentAttendace =[]
-    if(allAttendance){
-      studentAttendace = this.getAttendance(allAttendance, allStudents)
-    }else{
-      studentAttendace = allStudents
-    }
+    console.log(allAttendance);
+    studentAttendace = this.getAttendance(allAttendance, allStudents)
     return (
       <section>
-        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} />:false*/}
         <DashTime />
+        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} />:false*/}
         <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendace}/>
       </section>
     )

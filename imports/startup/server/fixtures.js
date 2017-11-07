@@ -132,7 +132,7 @@ Meteor.startup(() => {
   }
   if(Attendance.find().count() === 0){
     Attendance.insert({
-      date: moment().format('DD-MM-YYYY'),
+      date: moment().add(-1, 'days').format('DD-MM-YYYY'),
       program: program1,
       students:[
         {
