@@ -6,6 +6,7 @@ import { Messages } from '../../api/messages'
 import { Attendance } from '../../api/attendance'
 
 import { Accounts } from 'meteor/accounts-base'
+import moment from 'moment'
 
 Meteor.startup(() => {
   let user = {}
@@ -131,12 +132,12 @@ Meteor.startup(() => {
   }
   if(Attendance.find().count() === 0){
     Attendance.insert({
-      date: Date(),
+      date: moment().format('DD-MM-YYYY'),
       program: program1,
       students:[
         {
           id: student1,
-          status:'present'
+          status:'attend'
         },
         {
           id:student2,

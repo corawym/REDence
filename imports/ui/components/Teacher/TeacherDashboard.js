@@ -1,10 +1,10 @@
 import React from 'react';
 import DashTable from '../Table/DashTable';
 import RaisedButton from 'material-ui/RaisedButton';
-const TeacherDashboard = ({data, handleClick, submitAttendance}) => {
+const TeacherDashboard = ({handleClick, submitAttendance, allAttendance}) => {
   return (
     <div>
-      <DashTable tableHeaderColumn={['Student','Attend','Late','Absence','Exception','Note','Total']} data={data} handleClick={handleClick}/>
+      <DashTable tableHeaderColumn={['Student','Attend','Late','Absence','Exception','Note','Total']} allAttendance={allAttendance} handleClick={handleClick}/>
       <RaisedButton label="Submit" primary={true} onClick={submitAttendance}/>
     </div>
   )
