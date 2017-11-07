@@ -14,7 +14,7 @@ class Dashboard extends Component {
     console.log(e.target.value, id)
   }
   submitAttendance(){
-    console.log("submit");
+    console.log("submit")
   }
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
@@ -42,20 +42,22 @@ class Dashboard extends Component {
   }
   render() {
     const data=[{id:'1', fullname:'John Smith'}]
-    const { allAttendance, allStudents } = this.props;
+    const { allAttendance, allStudents } = this.props
+
     const studentInfo = allStudents.find(student =>{
-      if(student._id === "KTrQvouRo9dPMyDQR"){
+      if(student.email === "bobby@email.com"){
         return student
       }
     })
     let studentAttendace =[]
-    console.log(allAttendance);
+    console.log(studentInfo)
+    console.log(allStudents)
     studentAttendace = this.getAttendance(allAttendance, allStudents)
     return (
       <section>
         <DashTime />
-        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendace}/>
+        { studentInfo ? <StudentDashboard studentInfo={studentInfo} /> : false }
+        {/*<TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendace}/>*/}
       </section>
     )
   }
