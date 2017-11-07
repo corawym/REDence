@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+
+import { DashTime } from '../../components/Time'
 import TeacherDashboard from '../../components/Teacher/TeacherDashboard'
 import { StudentDashboard } from '../../components/Student'
-import moment from 'moment';
 
 export default class Dashboard extends Component {
   handleClick(e,id){
@@ -12,17 +13,12 @@ export default class Dashboard extends Component {
   }
   
   render() {
- 
     const data=[{id:'1', fullname:'John Smith'}]
     return (
       <section>
-        <StudentDashboard />
-        <div>
-          <p>09:00 am</p>
-          <p>{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).format('ddd, D MMM YYYY'): moment().format('ddd, D MMM YYYY')}</p>
-          <p>{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).fromNow(): "Today"}</p>
-        </div>
-        <TeacherDasboard data={data} handleClick={this.handleClick} submitAttendance={this.submitAttendance}/>
+        {/*<StudentDashboard />*/}
+        <DashTime />
+        <TeacherDashboard data={data} handleClick={this.handleClick} submitAttendance={this.submitAttendance}/>
       </section>
     )
   }
