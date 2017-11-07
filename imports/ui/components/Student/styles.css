@@ -1,0 +1,18 @@
+.student-info-wrapper{
+  display: flex;
+}
+
+.student-info-personal{
+  margin-left: 20px;
+}
+
+.student-info-personal h1{
+  font-size: 1.7rem;
+  margin: 9px 0;
+}
+
+.student-info-personal h2{
+  font-size: 1.1rem;
+  margin: 0;
+}
+
