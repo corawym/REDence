@@ -5,7 +5,7 @@ import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
 
 import { DashTime } from '../../components/Time'
-import TeacherDashboard from '../../components/Teacher/TeacherDashboard'
+import { TeacherDashboard } from '../../components/Teacher/TeacherDashboard'
 import { StudentDashboard } from '../../components/Student'
 import moment from 'moment'
 
@@ -40,24 +40,39 @@ class Dashboard extends Component {
       })
     }
   }
+  getTotalAttendancePercent(studentInfo){
+    if(studentInfo){
+      const totalAttendance = studentInfo.total - studentInfo.missedDates.length - (studentInfo.lateDates.length/2)
+      const totalAttendancePercent = totalAttendance / studentInfo.total * 100
+      return totalAttendancePercent
+    }
+
+  }
   render() {
     const data=[{id:'1', fullname:'John Smith'}]
+    
     const { allAttendance, allStudents } = this.props
-
     const studentInfo = allStudents.find(student =>{
       if(student.email === "bobby@email.com"){
         return student
       }
     })
-    let studentAttendace =[]
+    let studentAttendance =[]
     console.log(studentInfo)
     console.log(allStudents)
-    studentAttendace = this.getAttendance(allAttendance, allStudents)
+    console.log(allAttendance)
+    const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
+
+    console.log(totalAttendancePercent)
+
+    studentAttendance = this.getAttendance(allAttendance, allStudents)
+
+
     return (
       <section>
         <DashTime />
-        { studentInfo ? <StudentDashboard studentInfo={studentInfo} /> : false }
-        {/*<TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendace}/>*/}
+        { studentInfo ? <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} /> : false }
+        {/*<TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendance}/>*/}
       </section>
     )
   }
