@@ -23,17 +23,20 @@ export default class Login extends Component {
 
   logIn(e){
     e.preventDefault()
-  console.log('lol')
+    let email = e.target.loginEmail.value
+    let pass = e.target.loginPass.value
+    Meteor.loginWithPassword(email, pass);
   }
 
   render() {
+    console.log(Meteor.userId)
     return (
       <div className='login-container'>
         <Paper style={style} zDepth={4}>
           <form autoComplete='off' onSubmit={this.logIn}>
-            <StyledTextField hintText="Email" label='email' className='text-field' />
+            <StyledTextField label='email' className='text-field' name='loginEmail'/>
             <br/>
-            <StyledTextField hintText="Password" label='password' />
+            <StyledTextField label='password' type='password' name='loginPass'/>
 
             <Link to={`/signup`} className='links'> Forgot password? </Link>
 
@@ -46,3 +49,7 @@ export default class Login extends Component {
     )
   }
 }
+
+export default withTracker(() => {
+
+})

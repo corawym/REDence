@@ -43,7 +43,6 @@ export default class Signup extends Component {
   }
 
   handleCode(e){
-    console.log(e.target.value);
     this.setState({
       code: e.target.value
     });
@@ -64,7 +63,7 @@ export default class Signup extends Component {
 
             <Link to={`/signup`} className="links"> Forgot password? </Link>
 
-            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" />
+            <Link to={`/`}><RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" /></Link>
 
             <Link to={`/signup`} className="links"> New user? </Link>
           </form>
@@ -78,11 +77,11 @@ export default class Signup extends Component {
 
             <p> Teacher Code </p>
 
-            <StyledTextField onChange={this.handleCode} label="teacher code" name="code" value={this.state.code} />
+            <StyledTextField onChange={(e) => this.handleCode(e)} label="teacher code" name="code" value={this.state.code} />
 
             <Link to={`/signup`} className="links"> Forgot password? </Link>
 
-            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} />
+            <Link to={`/`}><RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} /></Link>
 
             <Link to={`/signup`} className="links"> New user? </Link>
           </form>
