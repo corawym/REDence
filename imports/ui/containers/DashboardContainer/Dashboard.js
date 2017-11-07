@@ -10,11 +10,34 @@ import { StudentDashboard } from '../../components/Student'
 import moment from 'moment'
 
 class Dashboard extends Component {
-  handleClick(e,id){
-    console.log(e.target.value, id)
+  state={
+    studentAttendance:[]
   }
-  submitAttendance(){
+  handleClick= (e,id) => {
+    let { studentAttendance } = this.state
+    studentIndex = studentAttendance.findIndex(i => i.id === id);
+
+    if(studentIndex >=0){
+      studentAttendance[studentIndex].status = e.target.value
+    }else{
+      studentAttendance.push({
+        id:id,
+        status:e.target.value
+      })
+    }
+    this.setState({
+      studentAttendance
+    })
+  }
+  submitAttendance = () => {
     console.log("submit");
+    const { studentAttendance } = this.state
+    Meteor.call('attendance.submitAttendance',studentAttendance);
+  }
+  updateAttendace = () => {
+    console.log('update');
+    const { studentAttendance } = this.state
+    Meteor.call('attendance.updateAttendance',studentAttendance);
   }
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
@@ -49,13 +72,12 @@ class Dashboard extends Component {
       }
     })
     let studentAttendace =[]
-    console.log(allAttendance);
     studentAttendace = this.getAttendance(allAttendance, allStudents)
     return (
       <section>
         <DashTime />
         {/*studentInfo?<StudentDashboard studentInfo={studentInfo} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendace}/>
+        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendace} attendanceSubmitted={allAttendance.length>0?true:false}/>
       </section>
     )
   }

@@ -10,7 +10,6 @@ import {
 } from 'material-ui/Table';
 
 const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
-  console.log(allAttendance);
   return (
     <Table allRowsSelected={false}>
       <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -29,10 +28,10 @@ const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
             return(
               <TableRow selectable={false} key={student._id}>
                   <TableRowColumn>{student.fullName}</TableRowColumn>
-                    <TableRowColumn>{student.status.status?<input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} checked={student.status.status === 'attend'} readOnly={student.status.status === 'attend' ? true:false}/> : <input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} />}</TableRowColumn>
-                    <TableRowColumn>{student.status.status?<input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} checked={student.status.status === 'late'} readOnly={student.status.status === 'late'? true:false}/>: <input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} />}</TableRowColumn>
-                    <TableRowColumn>{student.status.status?<input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} checked={student.status.status === 'absent'} readOnly={student.status.status === 'absent'? true:false}/> : <input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)}/>}</TableRowColumn>
-                    <TableRowColumn>{student.status.status?<input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} checked={student.status.status === 'exception'} readOnly={student.status.status === 'exception'? true:false}/> : <input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)}/>}</TableRowColumn>
+                    <TableRowColumn><input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'attend'}/> </TableRowColumn>
+                    <TableRowColumn><input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'late'}/></TableRowColumn>
+                    <TableRowColumn><input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'absent'}/></TableRowColumn>
+                    <TableRowColumn><input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'exception'}/></TableRowColumn>
                   <TableRowColumn>{totalAtt.toFixed(2)}</TableRowColumn>
               </TableRow>
             )
