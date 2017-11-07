@@ -9,7 +9,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-const DashTable = ({ tableHeaderColumn, data, handleChange }) => {
+const DashTable = ({ tableHeaderColumn, data, handleClick }) => {
   return (
     <Table allRowsSelected={false}>
       <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -26,12 +26,10 @@ const DashTable = ({ tableHeaderColumn, data, handleChange }) => {
             return(
               <TableRow selectable={false} key={student.id}>
                   <TableRowColumn>{student.fullname}</TableRowColumn>
-                  
-                    <TableRowColumn><input type="radio" value="attend" name={`group-${student.id}`} onChange={(e)=>handleChange(e, student.id)}/></TableRowColumn>
-                    <TableRowColumn><input type="radio" value="late" name={`group-${student.id}`} onChange={(e)=>handleChange(e, student.id)}/></TableRowColumn>
-                    <TableRowColumn><input type="radio" value="absence" name={`group-${student.id}`} onChange={(e)=>handleChange(e, student.id)}/></TableRowColumn>
-                    <TableRowColumn><input type="radio" value="exception" name={`group-${student.id}`} onChange={(e)=>handleChange(e, student.id)}/></TableRowColumn>
-                  
+                    <TableRowColumn><input type="radio" value="attend" name={`group-${student.id}`} onClick={(e) => handleClick(e, student.id)}/></TableRowColumn>
+                    <TableRowColumn><input type="radio" value="late" name={`group-${student.id}`} onClick={(e) => handleClick(e, student.id)}/></TableRowColumn>
+                    <TableRowColumn><input type="radio" value="absence" name={`group-${student.id}`} onClick={(e) => handleClick(e, student.id)}/></TableRowColumn>
+                    <TableRowColumn><input type="radio" value="exception" name={`group-${student.id}`} onClick={(e) => handleClick(e, student.id)}/></TableRowColumn>
                   <TableRowColumn>Note....</TableRowColumn>
                   <TableRowColumn>90%</TableRowColumn>
               </TableRow>
