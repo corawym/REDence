@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect, Router } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { withTracker } from "meteor/react-meteor-data"
 
 import Paper from 'material-ui/Paper'
