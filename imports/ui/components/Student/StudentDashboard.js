@@ -53,7 +53,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
         <div className="flex-basis-25 text-center">
           <h3>Exception</h3>
           <p className="student-stat-subtitle">Not counted</p>
-          <p className="student-stat-num">{studentInfo.sickDays.length}</p>
+          <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
       

@@ -37,7 +37,7 @@ class Dashboard extends Component {
     const { studentAttendance } = this.state
     Meteor.call('attendance.submitAttendance',studentAttendance);
   }
-  updateAttendace = () => {
+  updateAttendance = () => {
     console.log('update');
     const { studentAttendance } = this.state
     Meteor.call('attendance.updateAttendance',studentAttendance);
@@ -75,7 +75,6 @@ class Dashboard extends Component {
 
   }
   render() {
-    const data=[{id:'1', fullname:'John Smith'}]
     const { allAttendance, allStudents } = this.props
     let studentAttendance =[]
 
@@ -89,12 +88,12 @@ class Dashboard extends Component {
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
 
-    
+
     return (
       <section className="dashboard">
         <DashTime />
         {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
       </section>
 
     )
