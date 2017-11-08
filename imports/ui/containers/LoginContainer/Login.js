@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, Router } from 'react-router-dom'
+import { withTracker } from "meteor/react-meteor-data"
 
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -18,18 +19,32 @@ const style = {
   padding: '15px'
 }
 
-export default class Login extends Component {
+class Login extends Component {
 
 
   logIn(e){
     e.preventDefault()
     let email = e.target.loginEmail.value
     let pass = e.target.loginPass.value
-    Meteor.loginWithPassword(email, pass);
+    Meteor.loginWithPassword(email, pass, function(error){
+      if(error){
+        alert(error)
+      } else {
+        console.log(this.props)
+      }
+    });
   }
 
   render() {
-    console.log(Meteor.userId)
+    const { currentUserId, userInfo } = this.props
+    console.log( currentUserId )
+
+    if( currentUserId ){
+      return <Redirect to='/' />
+    } else {
+      null
+    }
+
     return (
       <div className='login-container'>
         <Paper style={style} zDepth={4}>
@@ -47,9 +62,13 @@ export default class Login extends Component {
         </Paper>
       </div>
     )
+
+    
   }
 }
 
 export default withTracker(() => {
-
-})
+  return {
+    currentUserId: Meteor.userId()
+  }
+})(Login)
