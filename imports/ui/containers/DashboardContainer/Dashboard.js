@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { withTracker } from 'meteor/react-meteor-data'
 
 import { Students } from '../../../api/student'
@@ -98,16 +99,19 @@ class Dashboard extends Component {
         {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
         <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
       </section>
+
     )
   }
 }
-
 
 export default withTracker(() => {
   Meteor.subscribe('student')
   Meteor.subscribe('attendance')
   return {
     allStudents: Students.find({}).fetch(),
-    allAttendance: Attendance.find({date:`${moment().format('DD-MM-YYYY')}`}).fetch()
+    allAttendance: Attendance.find({date:`${moment().format('DD-MM-YYYY')}`}).fetch(),
+    currentUserId: Meteor.userId(),
+    userInfo: Meteor.user()
   }
 })(Dashboard)
+
