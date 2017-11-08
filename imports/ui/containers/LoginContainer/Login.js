@@ -10,12 +10,11 @@ import StyledTextField from '../../components/TextField/TextField'
 
 const style = {
   margin: '0 auto',
-  marginTop: '40%',
+  marginTop: '30%',
   width: '50%',
   textAlign: 'center',
   display: 'block',
   borderRadius: 5,
-  border: '2px solid red',
   padding: '15px'
 }
 

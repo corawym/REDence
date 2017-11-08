@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-
 import { withTracker } from "meteor/react-meteor-data";
 
+import Paper from 'material-ui/Paper'
 import RaisedButton from "material-ui/RaisedButton";
 
 import "./styles.css";
@@ -69,39 +69,41 @@ class Signup extends Component {
     }
 
     return (
-      <div className="tab-container">
-        <form autoComplete="off" onSubmit={this.signUpTeacher}>
-          <StyledTextField label="First Name" className="text-field" name="firstName" />
-          <br />
-          <StyledTextField label="Last Name" className="text-field" name="lastName" />
-          <br />
-          <StyledTextField label="email" className="text-field" name="teacherEmail" />
-          <br />
-          <StyledTextField label="password" type="password" name="teacherPassword" />
+      <div>
+        <Paper zDepth={4} className='form-container'>
+          <form autoComplete="off" onSubmit={this.signUpTeacher}>
+            <StyledTextField label="First Name" className="text-field" name="firstName" />
+            <br />
+            <StyledTextField label="Last Name" className="text-field" name="lastName" />
+            <br />
+            <StyledTextField label="email" className="text-field" name="teacherEmail" />
+            <br />
+            <StyledTextField label="password" type="password" name="teacherPassword" />
 
-          <p> Teacher Code </p>
+            <p> Teacher Code </p>
 
-          <StyledTextField onChange={e => this.handleCode(e)} label="teacher code" name="code" value={this.state.code} />
+            <StyledTextField onChange={e => this.handleCode(e)} label="teacher code" name="code" value={this.state.code} />
 
-          <Link to={`/signup`} className="links"> {" "} Forgot password?{" "} </Link>
+            <Link to={`/signup`} className="links"> {" "} Forgot password?{" "} </Link>
 
-          <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} />
+            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} />
 
-          <Link to={`/signup`} className="links"> {" "} New user?{" "} </Link>
-        </form>
+            <Link to={`/signup`} className="links"> {" "} New user?{" "} </Link>
+          </form>
 
         <br/>
 
-        <form autoComplete="off" onSubmit={this.signUpstudent}>
-          <StyledTextField label="First Name" className="text-field" name="firstName" />
-          <br />
-          <StyledTextField label="Last Name" className="text-field" name="lastName" />
-          <br />
-          <StyledTextField label="email" className="text-field" name="studentEmail" />
-          <br />
-          <StyledTextField label="password" type="password" name="studentPassword" />
-          <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" />
-        </form>
+          <form autoComplete="off" onSubmit={this.signUpstudent}>
+            <StyledTextField label="First Name" className="text-field" name="firstName" />
+            <br />
+            <StyledTextField label="Last Name" className="text-field" name="lastName" />
+            <br />
+            <StyledTextField label="email" className="text-field" name="studentEmail" />
+            <br />
+            <StyledTextField label="password" type="password" name="studentPassword" />
+            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" />
+          </form>
+        </Paper>
       </div>
     );
   }
