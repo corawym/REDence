@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { withTracker } from 'meteor/react-meteor-data'
 
 import { Students } from '../../../api/student'
@@ -29,14 +30,15 @@ class Dashboard extends Component {
         <DashTime />
         {/*<TeacherDashboard data={data} handleClick={this.handleClick} submitAttendance={this.submitAttendance}/>*/}
       </section>
+
     )
   }
 }
 
-
 export default withTracker(() => {
-  Meteor.subscribe('student')
   return {
-    students: Students.find({}).fetch()
+    currentUserId: Meteor.userId(),
+    userInfo: Meteor.user()
   }
 })(Dashboard)
+
