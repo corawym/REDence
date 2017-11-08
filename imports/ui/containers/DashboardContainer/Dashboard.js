@@ -5,7 +5,7 @@ import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
 
 import { DashTime } from '../../components/Time'
-import { TeacherDashboard } from '../../components/Teacher/TeacherDashboard'
+import { TeacherDashboard } from '../../components/Teacher'
 import { StudentDashboard } from '../../components/Student'
 import moment from 'moment'
 
@@ -96,7 +96,7 @@ class Dashboard extends Component {
       <section className="dashboard">
         <DashTime />
         {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendace} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
       </section>
     )
   }
