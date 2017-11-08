@@ -1,68 +1,92 @@
-import React, { Component } from 'react'
-import {Tabs, Tab} from 'material-ui/Tabs'
-import RaisedButton from 'material-ui/RaisedButton'
-import './styles.css'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-}
+import { Tabs, Tab } from "material-ui/Tabs";
+import RaisedButton from "material-ui/RaisedButton";
 
-const RBstyle = {
-  margin: 12,
-};
+import "./styles.css";
+import StyledTextField from "../../components/TextField/TextField";
 
 export default class Signup extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      value: 'a',
-    }
+      value: "a",
+      code: "meow"
+    };
   }
 
-  handleChange = (value) => {
+  handleChange = value => {
     this.setState({
-      value: value,
-    })
+      value: value
+    });
+  };
+
+  signUpStudent(e) {
+    e.preventDefault();
+    let email = e.target.studentEmail.value;
+    let pass = e.target.studentPassword.value;
+    Accounts.createUser({
+      email: email,
+      password: pass
+    });
   }
 
+  signUpTeacher(e) {
+    e.preventDefault();
+    let email = e.target.teacherEmail.value;
+    let pass = e.target.teacherPassword.value;
+    Accounts.createUser({
+      email: email,
+      password: pass
+    });
+  }
+
+  handleCode(e){
+    this.setState({
+      code: e.target.value
+    });
+  };
 
   render() {
     return (
       <Tabs
         value={this.state.value}
         onChange={this.handleChange}
-        className='signup-tabs'
+        className="signup-tabs"
       >
-        <Tab label="Tab A" value="a">
-          <div className='form-container'>
-            <h2 style={styles.headline}>Controllable Tab A</h2>
-            <p>
-              Tabs are also controllable if you want to programmatically pass them their values.
-              This allows for more functionality in Tabs such as not
-              having any Tab selected or assigning them different values.
-            </p>
-          </div>
+        <Tab label="Student" value="a" className="tab-container">
+          <form autoComplete="off" onSubmit={this.signUpStudent}>
+            <StyledTextField label="email" className="text-field" name="studentEmail" />
+              <br />
+            <StyledTextField label="password" type="password" name="studentPassword" />
+
+            <Link to={`/signup`} className="links"> Forgot password? </Link>
+
+            <Link to={`/`}><RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" /></Link>
+
+            <Link to={`/signup`} className="links"> New user? </Link>
+          </form>
         </Tab>
-        <Tab label="Tab B" value="b">
-          <div className='form-container'>
-            <h2 style={styles.headline}>Controllable Tab B</h2>
-            <p>
-              This is another example of a controllable tab. Remember, if you
-              use controllable Tabs, you need to give all of your tabs values or else
-              you wont be able to select them.
-            </p>
-          </div>
+
+        <Tab label="Teacher" value="b" className="tab-container">
+          <form autoComplete="off" onSubmit={this.signUpTeacher}>
+            <StyledTextField label="email" className="text-field" name="teacherEmail" />
+              <br />
+            <StyledTextField label="password" type="password" name="teacherPassword" />
+
+            <p> Teacher Code </p>
+
+            <StyledTextField onChange={(e) => this.handleCode(e)} label="teacher code" name="code" value={this.state.code} />
+
+            <Link to={`/signup`} className="links"> Forgot password? </Link>
+
+            <Link to={`/`}><RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} /></Link>
+
+            <Link to={`/signup`} className="links"> New user? </Link>
+          </form>
         </Tab>
       </Tabs>
-    )
+    );
   }
 }
-
-
-

@@ -9,3 +9,14 @@
   border: 2px solid red;
   padding: 10px;
 }
+
+.tab-container{
+  margin: '0 auto';
+  margin-top: '40%';
+  width: '50%';
+  text-align: 'center';
+  display: 'block';
+  border-radius: 5;
+  border: '2px solid red';
+  padding: '15px';
+}

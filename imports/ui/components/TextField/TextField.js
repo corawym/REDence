@@ -18,13 +18,17 @@ const styles = {
     }
 }
 
-const StyledTextField = ({ label }) => (
+const StyledTextField = ({ label, name, type, onChange }) => (
     <TextField
         style={styles.fieldStyle}
         hintText={label}
         floatingLabelText={label}
         errorStyle={styles.errorStyle}
         underlineFocusStyle={styles.underlineStyle}
+        name={name}
+        type={type}
+        onChange={onChange}
+        autoComplete='off'
     />
 )
 
