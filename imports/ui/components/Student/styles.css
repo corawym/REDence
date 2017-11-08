@@ -1,18 +1,66 @@
-.student-info-wrapper{
+/* Style - global*/
+.display-flex{
   display: flex;
 }
 
+.flex-basis-25{
+  flex-basis: 25%;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+
+/* Style - student dashboard*/
 .student-info-personal{
   margin-left: 20px;
 }
 
 .student-info-personal h1{
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin: 9px 0;
 }
 
 .student-info-personal h2{
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin: 0;
 }
 
+.student-info-container h3 {
+  color: #313131;
+  margin-bottom: 7px;
+}
+
+.student-stat-overview{
+  margin: 50px;
+}
+
+.student-stat-subtitle{
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+
+.student-stat-num{
+  font-size: 2rem;
+  margin: 0;
+}
+
+.student-stat-overview{
+  position: relative;
+  justify-content: center;
+}
+
+.overview-wrapper{
+  position: absolute;
+  align-self: center;
+}
+
+.student-overview-num{
+  font-size: 3rem;
+  margin: 0;
+}
