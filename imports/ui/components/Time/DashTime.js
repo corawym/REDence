@@ -1,11 +1,13 @@
 import React from 'react'
 import moment from 'moment'
 
+import './styles.css'
+
 const DashTime = () => (
-  <div>
-    <p>09:00 am</p>
-    <p>{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).format('ddd, D MMM YYYY'): moment().format('ddd, D MMM YYYY')}</p>
-    <p>{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).fromNow(): "Today"}</p>
+  <div className="dash-time-wrapper">
+    <p className="dash-today-time">09:00 <span>am</span></p>
+    <p className="dash-today-date">{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).format('ddd, D MMM YYYY'): moment().format('ddd, D MMM YYYY')}</p>
+    <p className="dash-time-date">{moment().isoWeekday() === 6 || moment().isoWeekday() === 7 ? moment().day(1).fromNow(): "Today"}</p>
   </div>
 )
 
