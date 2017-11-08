@@ -72,10 +72,14 @@ class Dashboard extends Component {
       const totalAttendancePercent = Math.round(totalAttendance / studentInfo.total * 100)
       return totalAttendancePercent
     }
-
   }
+
+  logout(){
+    Meteor.logout()
+  }
+
   render() {
-    const { allAttendance, allStudents } = this.props
+    const { allAttendance, allStudents, userInfo } = this.props
     let studentAttendance =[]
 
     const studentInfo = allStudents.find(student =>{
@@ -88,14 +92,23 @@ class Dashboard extends Component {
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
 
+    let DashboardWithRole = null
+    if(userInfo){
+      if(userInfo.profile.role === "teacher"){
+        DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+      } else {
+        DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+      }
+    } else {
+      return <Redirect to='/login' />
+    }
 
     return (
       <section className="dashboard">
         <DashTime />
-        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        {DashboardWithRole}      
+        <button onClick={this.logout}> logut </button>
       </section>
-
     )
   }
 }
