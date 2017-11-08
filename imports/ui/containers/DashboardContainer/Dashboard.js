@@ -1,30 +1,36 @@
 import React, { Component } from 'react'
-import { Link, Redirect, Router } from 'react-router-dom'
-import { withTracker } from "meteor/react-meteor-data"
 
-import RaisedButton from 'material-ui/RaisedButton'
+import { withTracker } from 'meteor/react-meteor-data'
 
+import { Students } from '../../../api/student'
 
+import { DashTime } from '../../components/Time'
+import TeacherDashboard from '../../components/Teacher/TeacherDashboard'
+import { StudentDashboard } from '../../components/Student'
 
 class Dashboard extends Component {
-
-  logout(){
-    Meteor.logout()
+  handleClick(e,id){
+    console.log(e.target.value, id)
+  }
+  submitAttendance(){
+    console.log("submit");
   }
   
   render() {
-    const { currentUserId, userInfo } = this.props
-    console.log( currentUserId )
-
-    if(userInfo){
-      console.log( userInfo.emails[0].address )      
-    }
-
+    // const data=[{id:'1', fullname:'John Smith'}]
+    // console.log (this.props.students)
+    const studentInfo = this.props.students.find(student =>{
+      if(student._id === "KTrQvouRo9dPMyDQR"){
+        return student
+      }
+    })
     return (
-      <div>
-        Hello from dashboard
-        <Link to={`/login`}> <RaisedButton label='logout' primary={true} style={{ width: '95%' }} onClick={this.logout}/> </Link>
-      </div>
+      <section>
+        <StudentDashboard studentInfo={studentInfo} />
+        <DashTime />
+        {/*<TeacherDashboard data={data} handleClick={this.handleClick} submitAttendance={this.submitAttendance}/>*/}
+      </section>
+
     )
   }
 }
@@ -35,3 +41,4 @@ export default withTracker(() => {
     userInfo: Meteor.user()
   }
 })(Dashboard)
+
