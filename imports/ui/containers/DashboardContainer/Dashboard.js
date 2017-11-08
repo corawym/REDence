@@ -40,6 +40,7 @@ class Dashboard extends Component {
     console.log('update');
     const { studentAttendance } = this.state
     Meteor.call('attendance.updateAttendance',studentAttendance);
+  }
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
       return data = allStudents.map((student)=>{
