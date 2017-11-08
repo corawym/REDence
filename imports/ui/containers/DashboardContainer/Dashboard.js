@@ -76,23 +76,20 @@ class Dashboard extends Component {
   }
   render() {
     const data=[{id:'1', fullname:'John Smith'}]
-    
     const { allAttendance, allStudents } = this.props
+    let studentAttendance =[]
+
     const studentInfo = allStudents.find(student =>{
       if(student.email === "bobby@email.com"){
         return student
       }
     })
 
-    let studentAttendance =[]
-    console.log(studentInfo)
-    console.log(allStudents)
-    console.log(allAttendance)
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
-    console.log(totalAttendancePercent)
-
     studentAttendance = this.getAttendance(allAttendance, allStudents)
+
+    
     return (
       <section className="dashboard">
         <DashTime />
