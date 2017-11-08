@@ -12,12 +12,34 @@ import moment from 'moment'
 import './styles.css'
 
 class Dashboard extends Component {
-  handleClick(e,id){
-    console.log(e.target.value, id)
+  state={
+    studentAttendance:[]
   }
-  submitAttendance(){
-    console.log("submit")
+  handleClick= (e,id) => {
+    let { studentAttendance } = this.state
+    studentIndex = studentAttendance.findIndex(i => i.id === id);
+
+    if(studentIndex >=0){
+      studentAttendance[studentIndex].status = e.target.value
+    }else{
+      studentAttendance.push({
+        id:id,
+        status:e.target.value
+      })
+    }
+    this.setState({
+      studentAttendance
+    })
   }
+  submitAttendance = () => {
+    console.log("submit");
+    const { studentAttendance } = this.state
+    Meteor.call('attendance.submitAttendance',studentAttendance);
+  }
+  updateAttendace = () => {
+    console.log('update');
+    const { studentAttendance } = this.state
+    Meteor.call('attendance.updateAttendance',studentAttendance);
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
       return data = allStudents.map((student)=>{
@@ -59,6 +81,7 @@ class Dashboard extends Component {
         return student
       }
     })
+
     let studentAttendance =[]
     console.log(studentInfo)
     console.log(allStudents)
@@ -68,13 +91,11 @@ class Dashboard extends Component {
     console.log(totalAttendancePercent)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
-
-
     return (
       <section className="dashboard">
         <DashTime />
-        { studentInfo ? <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} /> : false }
-        {/*<TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} allAttendance={studentAttendance}/>*/}
+        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
+        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendace={this.updateAttendace} allAttendance={studentAttendace} attendanceSubmitted={allAttendance.length>0?true:false}/>
       </section>
     )
   }
