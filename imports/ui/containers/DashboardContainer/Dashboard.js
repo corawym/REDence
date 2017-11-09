@@ -42,7 +42,15 @@ class Dashboard extends Component {
   updateAttendance = () => {
     console.log('update');
     const { studentAttendance } = this.state
-    Meteor.call('attendance.updateAttendance',studentAttendance);
+    const { allAttendance } = this.props
+    studentAttendance.forEach(attendance => {
+      allAttendance[0].students.forEach(students => {
+        if(attendance.id === students.id){
+          students.status = attendance.status
+        }
+      })
+    });
+    Meteor.call('attendance.updateAttendance',allAttendance[0].students, this.props.allStudents);
   }
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
@@ -96,7 +104,6 @@ class Dashboard extends Component {
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
-
     let DashboardWithRole = null
     let userFullName = null
     if(currentUserId){

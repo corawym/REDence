@@ -14,6 +14,7 @@ Meteor.startup(() => {
   let student2=''
   let student3=''
   let program1=''
+  let teacher1=''
 
   if (Programs.find().count() === 0){
 
@@ -49,7 +50,7 @@ Meteor.startup(() => {
       ]
     })
 
-     Teachers.insert({
+     teacher1 = Teachers.insert({
       fullName: 'Mandi Wise',
       email: 'mandi@email.com',
       role: 'teacher',
@@ -57,6 +58,21 @@ Meteor.startup(() => {
         Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
       ]
     })
+
+    const teacher1Info= Teachers.find({_id:`${teacher1}`}, {_id:0, email:1}).fetch()
+
+    if(teacher1Info){
+      Accounts.createUser({
+        email: teacher1Info[0].email,
+        password: 'pass',
+        profile: {
+          fullName: `${teacher1Info[0].fullName}`,        
+          role: 'teacher'
+        }
+      });
+    }else{
+      console.log('fail');
+    }
   } 
 
   if(Students.find().count() === 0){
