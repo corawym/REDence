@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import StudentMessageList from './StudentMessageList'
 import { Avatar } from 'material-ui'
 import { CircularProgress } from 'material-ui'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -9,7 +9,7 @@ import ContentAdd from 'material-ui/svg-icons/communication/chat';
 import './styles.css'
 
 
-const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
+const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) => {
   console.log(studentInfo.fullName[0])
   return(
     <div className="student-info-container">
@@ -63,7 +63,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
       <FloatingActionButton>
         <ContentAdd />
       </FloatingActionButton>
-      
+      <StudentMessageList allMessages={allMessages}/>
     </div>
   )
 }

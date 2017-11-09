@@ -44,18 +44,14 @@ Meteor.startup(() => {
       fullName: 'Mackenzie Keiran',
       email: 'mack@email.com',
       role: 'teacher',
-      programs: [
-        Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
-      ]
+      programs: Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
     })
 
-     Teachers.insert({
+    Teachers.insert({
       fullName: 'Mandi Wise',
       email: 'mandi@email.com',
       role: 'teacher',
-      programs: [
-        Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
-      ]
+      programs: Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
     })
   } 
 
@@ -132,25 +128,19 @@ Meteor.startup(() => {
     Messages.insert({
       message: 'BOBBY IS NAT KEEEWL',
       sender: Students.find({ email: 'bobby@email.com' }).fetch(),
-      receiver: [
-        Teachers.find({ program: 'App Dev' }).fetch()
-      ]
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
     })
 
     Messages.insert({
       message: 'CORA LOOOOVES DOGS',
       sender: Students.find({ email: 'cora@email.com' }).fetch(),
-      receiver: [
-        Teachers.find({ program: 'App Dev' }).fetch()
-      ]
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
     })
 
     Messages.insert({
       message: 'MARK HAS TOO MANY LATES',
       sender: Students.find({ email: 'mark@email.com' }).fetch(),
-      receiver: [
-        Teachers.find({ program: 'App Dev' }).fetch()
-      ]
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
     })
 
   }
