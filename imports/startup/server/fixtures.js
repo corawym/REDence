@@ -15,15 +15,6 @@ Meteor.startup(() => {
   let student3=''
   let program1=''
 
-  // if( Meteor.users.find().count() == 0 ){
-  //   teacher = Accounts.createUser({
-  //     email: "hithere@email.com",
-  //     password: 'password'
-  //   })
-  // } else {
-  //   user = `${Meteor.users.findOne()._id}`
-  // }
-
   if (Programs.find().count() === 0){
 
     program1 = Programs.insert({ 
@@ -84,7 +75,6 @@ Meteor.startup(() => {
     const student1Info= Students.find({_id:`${student1}`}, {_id:0, email:1}).fetch()
 
     if(student1Info){
-      console.log(student1Info)
       Accounts.createUser({
         email: student1Info[0].email,
         password: 'pass',
@@ -112,7 +102,6 @@ Meteor.startup(() => {
     const student2Info= Students.find({_id:`${student2}`}, {_id:0, email:1}).fetch()
     
     if(student2Info){
-      console.log(student2Info)
       Accounts.createUser({
         email: student2Info[0].email,
         password: 'pass',
