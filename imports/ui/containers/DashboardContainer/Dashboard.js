@@ -80,25 +80,31 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { allAttendance, allStudents, userInfo } = this.props
+    const { allAttendance, allStudents, userInfo, currentUserId } = this.props
     let studentAttendance =[]
-
-    const studentInfo = allStudents.find(student =>{
-      if(student.email === "bobby@email.com"){
-        return student
-      }
-    })
+    let studentInfo = null
+    if(userInfo){
+      console.log(userInfo.emails[0].address);
+      studentInfo = allStudents.find(student =>{
+        if(student.email === userInfo.emails[0].address){
+          return student
+        }
+      })
+    }
+    console.log(studentInfo)
 
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
 
     let DashboardWithRole = null
-    if(userInfo){
-      if(userInfo.profile.role === "teacher"){
-        DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
-      } else {
-        DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+    if(currentUserId){
+      if(userInfo){
+        if(userInfo.profile.role === "teacher"){
+          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        } else {
+          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+        }
       }
     } else {
       return <Redirect to='/login' />

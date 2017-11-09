@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { Avatar } from 'material-ui'
 import { CircularProgress } from 'material-ui'
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/communication/chat';
 
 import './styles.css'
 
@@ -56,6 +59,10 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
+
+      <FloatingActionButton>
+        <ContentAdd />
+      </FloatingActionButton>
       
     </div>
   )
