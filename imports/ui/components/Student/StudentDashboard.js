@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTracker } from "meteor/react-meteor-data";
+
 
 import { Avatar } from 'material-ui'
 import { CircularProgress } from 'material-ui'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/communication/chat';
+import { MessageContainer } from '../../containers/MessageContainer'
 
 import './styles.css'
+
+const style = {
+  border: '3px solid pink',
+  position: 'fixed',
+  bottom: '30px',
+  right: '30px'
+}
 
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
@@ -24,7 +32,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
       <div className="student-stat-overview display-flex">
         <CircularProgress
           mode="determinate"
-          value={totalAttendancePercent}
+          value={totalAttendancePercent} 
           size={230}
           thickness={10}
           className="overview-progress-wrapper"
@@ -60,10 +68,8 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
         </div>
       </div>
 
-      <FloatingActionButton>
-        <ContentAdd />
-      </FloatingActionButton>
-      
+      <MessageContainer style={style} studentInfo={studentInfo}/>
+
     </div>
   )
 }
