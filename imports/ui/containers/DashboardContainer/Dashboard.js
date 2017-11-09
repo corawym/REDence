@@ -91,13 +91,15 @@ class Dashboard extends Component {
 
 
     return (
-
-      <section className="dashboard">
+      <div>
         <HeaderContainer />
-        <DashTime />
-        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
-      </section>
+        <section className="dashboard">
+          
+          <DashTime />
+          {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
+          <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        </section>
+      </div>
 
     )
   }
