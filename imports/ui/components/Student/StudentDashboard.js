@@ -60,7 +60,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
         </div>
       </div>
 
-      <FloatingActionButton>
+      <FloatingActionButton className='msg-button'>
         <ContentAdd />
       </FloatingActionButton>
       

@@ -18,7 +18,7 @@ const style = {
   padding: '15px'
 }
 
-class Login extends Component {
+class Message extends Component {
 
 
   logIn(e){
@@ -48,15 +48,12 @@ class Login extends Component {
       <div className='login-container'>
         <Paper style={style} zDepth={4}>
           <form autoComplete='off' onSubmit={this.logIn}>
+            
             <StyledTextField label='email' className='text-field' name='loginEmail'/>
             <br/>
             <StyledTextField label='password' type='password' name='loginPass'/>
 
-            <Link to={`/signup`} className='links'> Forgot password? </Link>
-
             <RaisedButton type='submit' label='Log in' primary={true} style={{ width: '95%' }} />
-
-            <Link to={`/signup`} className='links'> New user? </Link>
           </form>
         </Paper>
       </div>
@@ -70,4 +67,4 @@ export default withTracker(() => {
   return {
     currentUserId: Meteor.userId()
   }
-})(Login)
+})(Message)

@@ -64,3 +64,10 @@
   font-size: 3rem;
   margin: 0;
 }
+
+.msg-button{
+  border: 3px solid pink;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
