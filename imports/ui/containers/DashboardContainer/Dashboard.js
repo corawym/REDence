@@ -92,7 +92,6 @@ class Dashboard extends Component {
         }
       })
     }
-    console.log(studentInfo)
 
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 

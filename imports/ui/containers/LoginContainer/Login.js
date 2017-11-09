@@ -60,9 +60,7 @@ class Login extends Component {
           </form>
         </Paper>
       </div>
-    )
-
-    
+    )    
   }
 }
 
