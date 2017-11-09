@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data'
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
 
+import { HeaderContainer } from '../HeaderContainer'
 import { DashTime } from '../../components/Time'
 import { TeacherDashboard } from '../../components/Teacher'
 import { StudentDashboard } from '../../components/Student'
@@ -90,11 +91,15 @@ class Dashboard extends Component {
 
 
     return (
-      <section className="dashboard">
-        <DashTime />
-        {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-        <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
-      </section>
+      <div>
+        <HeaderContainer />
+        <section className="dashboard">
+          
+          <DashTime />
+          {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
+          <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        </section>
+      </div>
 
     )
   }
