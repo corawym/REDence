@@ -99,12 +99,15 @@ class Dashboard extends Component {
     studentAttendance = this.getAttendance(allAttendance, allStudents)
 
     let DashboardWithRole = null
+    let userFullName = null
     if(currentUserId){
       if(userInfo){
         if(userInfo.profile.role === "teacher"){
           DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+          userFullName = userInfo.profile.fullName
         } else {
           DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+          userFullName = userInfo.profile.fullName
         }
       }
     } else {
@@ -115,7 +118,7 @@ class Dashboard extends Component {
     return (
 
       <div>
-        <HeaderContainer logOut={this.logout}/>
+        <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
           <DashTime />
           {DashboardWithRole}
