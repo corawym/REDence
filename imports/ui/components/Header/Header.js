@@ -4,7 +4,7 @@ import { FlatButton } from 'material-ui'
 
 import './styles.css'
 
-const Header = ({logOut}) => (
+const Header = ({logOut, userFullName}) => (
   <div className="header-wrapper">
 
     <div className="header-leftside">
@@ -12,7 +12,7 @@ const Header = ({logOut}) => (
     </div>
 
     <div className="header-rightside">
-      <p>Hi, cdnvdfnkvfv</p>
+      <p>Hi, {userFullName}</p>
       <FlatButton label="Logout" className="button-logout" backgroundColor="#e2e2e2" style={{borderRadius:'18px', padding:'0 16px'}} labelStyle={{color:'#969696'}} onClick={logOut}></FlatButton>
     </div> 
 

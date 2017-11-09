@@ -8,10 +8,10 @@ import './styles.css'
 class HeaderContainer extends Component {
 
   render() {
-    const {logOut} = this.props
+    const {logOut, userFullName} = this.props
     return (
       <Paper zDepth={1} className="headerContainer">
-        <Header logOut={logOut}/>
+        <Header logOut={logOut} userFullName={userFullName}/>
       </Paper>
     )
   }

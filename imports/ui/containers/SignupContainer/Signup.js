@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper'
 import RaisedButton from "material-ui/RaisedButton";
 
 import "./styles.css";
+import { Teachers } from '../../../api/teacher'
 import StyledTextField from "../../components/TextField/TextField";
 
 class Signup extends Component {
@@ -23,34 +24,23 @@ class Signup extends Component {
     let pass = e.target.teacherPassword.value;
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
+    let fullName = `${firstName} ${lastName}`
 
     const teacherUserInfo = Accounts.createUser({
       email: email,
       password: pass,
       profile: {
-        fullName: `${lastName}, ${firstName}`,        
+        fullName: fullName,        
         role: 'teacher',
         program: []
       }
     });
-  }
 
-  signUpstudent(e) {
-    e.preventDefault();
-    let email = e.target.studentEmail.value;
-    let pass = e.target.studentPassword.value;
-    let firstName = e.target.firstName.value;
-    let lastName = e.target.lastName.value;
-
-    Accounts.createUser({
+    Teachers.insert({
+      fullName: fullName,
       email: email,
-      password: pass,
-      profile: {
-        fullName: `${lastName}, ${firstName}`,        
-        role: 'student',
-        program: []
-      }
-    });
+      role: 'teacher'
+    })
   }
 
   handleCode(e) {
