@@ -13,7 +13,7 @@ const Header = ({logOut}) => (
 
     <div className="header-rightside">
       <p>Hi, cdnvdfnkvfv</p>
-      <FlatButton label="Logout" className="button-logout" backgroundColor="#e2e2e2" style={{borderRadius:'18px', padding:'0 16px'}} labelStyle={{color:'#969696'}} onClick={logOut()}></FlatButton>
+      <FlatButton label="Logout" className="button-logout" backgroundColor="#e2e2e2" style={{borderRadius:'18px', padding:'0 16px'}} labelStyle={{color:'#969696'}} onClick={logOut}></FlatButton>
     </div> 
 
   </div>

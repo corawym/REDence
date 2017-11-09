@@ -24,7 +24,7 @@ class Signup extends Component {
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
 
-    Accounts.createUser({
+    const teacherUserInfo = Accounts.createUser({
       email: email,
       password: pass,
       profile: {
