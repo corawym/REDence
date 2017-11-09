@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 
 import { withTracker } from 'meteor/react-meteor-data'
 
@@ -73,31 +74,50 @@ class Dashboard extends Component {
       const totalAttendancePercent = Math.round(totalAttendance / studentInfo.total * 100)
       return totalAttendancePercent
     }
-
   }
-  render() {
-    const { allAttendance, allStudents } = this.props
-    let studentAttendance =[]
 
-    const studentInfo = allStudents.find(student =>{
-      if(student.email === "bobby@email.com"){
-        return student
-      }
-    })
+  logout(){
+    Meteor.logout()
+  }
+
+  render() {
+    const { allAttendance, allStudents, userInfo, currentUserId } = this.props
+    let studentAttendance =[]
+    let studentInfo = null
+    if(userInfo){
+      console.log(userInfo.emails[0].address);
+      studentInfo = allStudents.find(student =>{
+        if(student.email === userInfo.emails[0].address){
+          return student
+        }
+      })
+    }
+    console.log(studentInfo)
 
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
 
+    let DashboardWithRole = null
+    if(currentUserId){
+      if(userInfo){
+        if(userInfo.profile.role === "teacher"){
+          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+        } else {
+          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+        }
+      }
+    } else {
+      return <Redirect to='/login' />
+    }
 
     return (
+
       <div>
-        <HeaderContainer />
+        <HeaderContainer logOut={this.logout}/>
         <section className="dashboard">
-          
           <DashTime />
-          {/*studentInfo?<StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />:false*/}
-          <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+          {DashboardWithRole}
         </section>
       </div>
 

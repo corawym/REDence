@@ -81,6 +81,22 @@ Meteor.startup(() => {
       total: 90
     })
 
+    const student1Info= Students.find({_id:`${student1}`}, {_id:0, email:1}).fetch()
+
+    if(student1Info){
+      console.log(student1Info)
+      Accounts.createUser({
+        email: student1Info[0].email,
+        password: 'pass',
+        profile: {
+          fullName: `${student1Info[0].fullName}`,        
+          role: 'student'
+        }
+      });
+    }else{
+      console.log('fail');
+    }
+
 
     student2 = Students.insert({
       fullName: 'Cora Wongy',
@@ -92,6 +108,22 @@ Meteor.startup(() => {
       sickDates: ['19-10-2017'],
       total: 90
     })
+
+    const student2Info= Students.find({_id:`${student2}`}, {_id:0, email:1}).fetch()
+    
+    if(student2Info){
+      console.log(student2Info)
+      Accounts.createUser({
+        email: student2Info[0].email,
+        password: 'pass',
+        profile: {
+          fullName: `${student2Info[0].fullName}`,        
+          role: 'student'
+        }
+      });
+    }else{
+      console.log('fail');
+    }
 
     student3= Students.insert({
       fullName: 'Mark Cooly',

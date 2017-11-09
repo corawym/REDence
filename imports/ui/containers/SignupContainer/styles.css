@@ -1,11 +1,9 @@
-.tab-container{
-  border: 3px solid pink;
+.form-container{
   margin: 0 auto;
   margin-top: 10%;
   width: 50%;
   text-align: center;
   display: block;
   border-radius: 5;
-  border: 2px solid red;
   padding: 15px;
 }
