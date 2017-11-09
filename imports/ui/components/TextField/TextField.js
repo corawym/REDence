@@ -6,7 +6,8 @@ import { deepPurple800 } from 'material-ui/styles/colors'
 
 const styles = {
     fieldStyle: {
-        width: '100%'
+        width: '100%',
+        fontFamily:'"Ubuntu", sans-serif'
     },
     errorStyle: {
         color: deepPurple800,
