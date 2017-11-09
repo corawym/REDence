@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data'
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
 
+import { HeaderContainer } from '../HeaderContainer'
 import { DashTime } from '../../components/Time'
 import { TeacherDashboard } from '../../components/Teacher'
 import { StudentDashboard } from '../../components/Student'
@@ -111,11 +112,15 @@ class Dashboard extends Component {
     }
 
     return (
-      <section className="dashboard">
-        <DashTime />
-        {DashboardWithRole}      
-        <button onClick={this.logout}> logut </button>
-      </section>
+
+      <div>
+        <HeaderContainer logOut={this.logout}/>
+        <section className="dashboard">
+          <DashTime />
+          {DashboardWithRole}
+        </section>
+      </div>
+
     )
   }
 }
