@@ -7,6 +7,17 @@ import { Paper, FlatButton } from 'material-ui'
 import './styles.css'
 import StyledTextField from '../../components/TextField/TextField'
 
+
+const styles = {
+  style: {
+    borderRadius:'18px', 
+    margin:'50px 0 15px 0'
+  },
+  labelStyle: {
+    color:'white', 
+    fontFamily:'"Ubuntu", sans-serif'
+  }
+}
 class Login extends Component {
 
   logIn(e){
@@ -47,13 +58,12 @@ class Login extends Component {
 
               <FlatButton 
               type='submit' 
-              label='Log in'  
+              fullWidth={true}
+              label='Log in' 
+              labelStyle={styles.labelStyle} 
               backgroundColor='#e2231a'
               hoverColor='#313131'
-              fullWidth={true}
-              labelStyle={{color:'white', fontFamily:'"Ubuntu", sans-serif'}}
-              style={{borderRadius:'18px', margin:'50px 0 15px 0'}}
-              className='submit-button'/>
+              style={styles.style}/>
 
               <p className='text-center'><Link to={`/signup`} className='links main-font-family'> New user? </Link></p>
             </form>
