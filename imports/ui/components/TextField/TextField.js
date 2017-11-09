@@ -9,14 +9,21 @@ const styles = {
         width: '100%',
         fontFamily:'"Ubuntu", sans-serif'
     },
-    errorStyle: {
-        color: deepPurple800,
-        position: 'absolute',
-        bottom: '-0.42rem'
+    floatingLabelStyle: {
+        color:'#969696'
+    },
+    floatingLabelFocusStyle: {
+        color: '#313131'
     },
     underlineStyle: {
-        borderColor: deepPurple800
+        borderColor: '#313131'
+    },
+    errorStyle: {
+        color: '#e2231a',
+        position: 'absolute',
+        bottom: '-0.42rem'
     }
+    
 }
 
 const StyledTextField = ({ label, name, type, onChange }) => (
@@ -24,12 +31,15 @@ const StyledTextField = ({ label, name, type, onChange }) => (
         style={styles.fieldStyle}
         hintText={label}
         floatingLabelText={label}
-        errorStyle={styles.errorStyle}
+        floatingLabelStyle={styles.floatingLabelStyle}
+        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         underlineFocusStyle={styles.underlineStyle}
         name={name}
         type={type}
         onChange={onChange}
         autoComplete='off'
+
+        errorStyle={styles.errorStyle}
     />
 )
 
