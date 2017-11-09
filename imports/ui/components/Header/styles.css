@@ -23,7 +23,7 @@
 /* Style - Rightside */
 .header-rightside{
   display: flex;
-  margin-top: 14px;
+  margin-top: 15px;
 }
 
 .header-rightside p{
@@ -31,4 +31,13 @@
   margin: 0 20px;
   padding-top: 7px;
   color: #969696;
+  display: none;
 }
+
+/* Tablet view */
+@media screen and (min-width: 560px) {
+  .header-rightside p{
+    display: block;
+  }
+}
+
