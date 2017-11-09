@@ -100,11 +100,11 @@ class Dashboard extends Component {
         }
       })
     }
-    console.log(studentInfo)
 
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
+
     let DashboardWithRole = null
     let userFullName = null
     if(currentUserId){
