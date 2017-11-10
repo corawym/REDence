@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data'
 
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
+import { Messages } from '../../../api/messages'
 
 import { HeaderContainer } from '../HeaderContainer'
 import { DashTime } from '../../components/Time'
@@ -89,11 +90,10 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { allAttendance, allStudents, userInfo, currentUserId } = this.props
+    const { allAttendance, allStudents, userInfo, currentUserId, allMessages } = this.props
     let studentAttendance =[]
     let studentInfo = null
     if(userInfo){
-      console.log(userInfo.emails[0].address);
       studentInfo = allStudents.find(student =>{
         if(student.email === userInfo.emails[0].address){
           return student
@@ -104,6 +104,7 @@ class Dashboard extends Component {
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
+
     let DashboardWithRole = null
     let userFullName = null
     if(currentUserId){
@@ -112,7 +113,7 @@ class Dashboard extends Component {
           DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
           userFullName = userInfo.profile.fullName
         } else {
-          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} />
+          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} allMessages={allMessages}/>
           userFullName = userInfo.profile.fullName
         }
       }
@@ -138,11 +139,22 @@ class Dashboard extends Component {
 export default withTracker(() => {
   Meteor.subscribe('student')
   Meteor.subscribe('attendance')
+  Meteor.subscribe('messages')
+  let studentInfo = null
+  if(Meteor.user() && Students.find({}).fetch().length>0){
+    studentInfo = Students.find({}).fetch().find(student =>{
+      if(student.email === Meteor.user().emails[0].address){
+        return student
+      }
+    })
+  }
   return {
     allStudents: Students.find({}).fetch(),
     allAttendance: Attendance.find({date:`${moment().format('DD-MM-YYYY')}`}).fetch(),
     currentUserId: Meteor.userId(),
-    userInfo: Meteor.user()
+    userInfo: Meteor.user(),
+    
+    allMessages:Messages.find({ sender: { $elemMatch: { _id: `${studentInfo?studentInfo._id:''}`} } }).fetch()
   }
 })(Dashboard)
 

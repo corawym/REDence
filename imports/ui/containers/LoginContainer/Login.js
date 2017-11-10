@@ -35,7 +35,6 @@ class Login extends Component {
 
   render() {
     const { currentUserId, userInfo } = this.props
-    console.log( currentUserId )
 
     if( currentUserId ){
       return <Redirect to='/' />

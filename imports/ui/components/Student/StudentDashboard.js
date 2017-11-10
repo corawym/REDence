@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withTracker } from "meteor/react-meteor-data";
-
-
+import StudentMessageList from './StudentMessageList'
+import AttendanceList from './AttendanceList'
 import { Avatar } from 'material-ui'
 import { CircularProgress } from 'material-ui'
 import { MessageContainer } from '../../containers/MessageContainer'
@@ -17,8 +16,7 @@ const style = {
 }
 
 
-const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
-  console.log(studentInfo.fullName[0])
+const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) => {
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
@@ -67,9 +65,9 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent}) => {
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
-
+      <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
+      <StudentMessageList allMessages={allMessages}/>
       <MessageContainer style={style} studentInfo={studentInfo}/>
-
     </div>
   )
 }
