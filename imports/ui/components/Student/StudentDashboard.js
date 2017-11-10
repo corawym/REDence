@@ -17,7 +17,7 @@ const style = {
 }
 
 
-const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) => {
+const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
@@ -71,8 +71,9 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
       <h2><span><AttendanceIcon color='#e2231a' /></span>Attendance details</h2>
 
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
+
       <Divider style={{margin:'30px 0'}}/>
-      <StudentMessageList allMessages={allMessages}/>
+      <StudentMessageList allStudentMessages={allStudentMessages}/>
       <MessageContainer style={style} studentInfo={studentInfo}/>
     </div>
   )
