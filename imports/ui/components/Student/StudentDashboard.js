@@ -4,10 +4,16 @@ import StudentMessageList from './StudentMessageList'
 import AttendanceList from './AttendanceList'
 import { Avatar } from 'material-ui'
 import { CircularProgress } from 'material-ui'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/communication/chat';
+import { MessageContainer } from '../../containers/MessageContainer'
 
 import './styles.css'
+
+const style = {
+  border: '3px solid pink',
+  position: 'fixed',
+  bottom: '30px',
+  right: '30px'
+}
 
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) => {
@@ -24,7 +30,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
       <div className="student-stat-overview display-flex">
         <CircularProgress
           mode="determinate"
-          value={totalAttendancePercent}
+          value={totalAttendancePercent} 
           size={230}
           thickness={10}
           className="overview-progress-wrapper"
@@ -59,12 +65,9 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
-
-      <FloatingActionButton>
-        <ContentAdd />
-      </FloatingActionButton>
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
       <StudentMessageList allMessages={allMessages}/>
+      <MessageContainer style={style} studentInfo={studentInfo}/>
     </div>
   )
 }

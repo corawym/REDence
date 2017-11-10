@@ -1,16 +1,71 @@
-.login-container{
-  height: 100%;
+/* Style - global */
+.main-font-family{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
 }
 
-.anchor-tags{
-  text-align: left;
-  text-transform: capitalize;
+.position-center{
   width: 100%;
+  margin: 0 auto;
+}
+
+.text-center{
+  text-align: center;
+}
+
+/* Style - login */
+.login-page{
+  height: 100vh;
+  background: linear-gradient(to bottom, #e2231a, #ea384d);
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page-wrapper{
+  width: 100%;
+}
+
+.login-header{
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 0;
+  margin-top: 50px;
+} 
+
+.login-header span{
+  color: #c5c5c5;
+}
+
+.login-header-subtitle{
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.login-card-container{
+  width: 70%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2.5rem;
 }
 
 .links{
-  text-align: left;
-  width: 100%;
-  margin-bottom: 5px;
+  color:#969696;
   text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.login-card-container p{
+  margin: 0;
+}
+
+.login-card-container p:hover{
+  text-decoration: underline;
+}
+
+.login-footer{
+  color: white;
+  margin-top: 4rem;
+  font-size: 0.9rem;
 }

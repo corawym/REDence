@@ -1,0 +1,21 @@
+.login-container{
+  height: 100%;
+}
+
+.anchor-tags{
+  text-align: left;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.links{
+  text-align: left;
+  width: 100%;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.message-container{
+  border: 3px solid red;
+  background-color: blue;
+}

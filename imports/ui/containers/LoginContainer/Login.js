@@ -2,24 +2,23 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { withTracker } from "meteor/react-meteor-data"
 
-import Paper from 'material-ui/Paper'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Paper, FlatButton } from 'material-ui'
 
 import './styles.css'
 import StyledTextField from '../../components/TextField/TextField'
 
-const style = {
-  margin: '0 auto',
-  marginTop: '30%',
-  width: '50%',
-  textAlign: 'center',
-  display: 'block',
-  borderRadius: 5,
-  padding: '15px'
+
+const styles = {
+  style: {
+    borderRadius:'18px', 
+    margin:'50px 0 15px 0'
+  },
+  labelStyle: {
+    color:'white', 
+    fontFamily:'"Ubuntu", sans-serif'
+  }
 }
-
 class Login extends Component {
-
 
   logIn(e){
     e.preventDefault()
@@ -44,24 +43,36 @@ class Login extends Component {
     }
 
     return (
-      <div className='login-container'>
-        <Paper style={style} zDepth={4}>
-          <form autoComplete='off' onSubmit={this.logIn}>
-            <StyledTextField label='email' className='text-field' name='loginEmail'/>
-            <br/>
-            <StyledTextField label='password' type='password' name='loginPass'/>
+      <div className='login-page'>
 
-            <Link to={`/signup`} className='links'> Forgot password? </Link>
+        <div className='login-page-wrapper'>
+          <h1 className='login-header text-center'>RED<span>en:ce</span></h1>
+          <h2 className='login-header-subtitle text-center'>Take attendance and Check attendance easier</h2>
+          
+          <Paper zDepth={1} className='login-card-container'>
+            <form autoComplete='off' onSubmit={this.logIn}>
+              <StyledTextField label='Email' className='text-field' name='loginEmail'/>
+              <StyledTextField label='Password' type='password' name='loginPass'/>
+              <p><Link to={`/signup`} className='links main-font-family'> Forgot password? </Link></p>
 
-            <RaisedButton type='submit' label='Log in' primary={true} style={{ width: '95%' }} />
+              <FlatButton 
+              type='submit' 
+              fullWidth={true}
+              label='Log in' 
+              labelStyle={styles.labelStyle} 
+              backgroundColor='#e2231a'
+              hoverColor='#313131'
+              style={styles.style}/>
 
-            <Link to={`/signup`} className='links'> New user? </Link>
-          </form>
-        </Paper>
+              <p className='text-center'><Link to={`/signup`} className='links main-font-family'> New user? </Link></p>
+            </form>
+          </Paper>
+
+        </div>
+
+        <p className='login-footer text-center'>Copyright created by Bobby, Cora, Mark in 2017</p>
       </div>
     )
-
-    
   }
 }
 
