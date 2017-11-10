@@ -54,6 +54,13 @@ class Dashboard extends Component {
     });
     Meteor.call('attendance.updateAttendance',allAttendance[0].students, this.props.allStudents);
   }
+  confirmationEmail(e,messageId, status){
+    if(status === 'accept'){
+      Meteor.call('message.acceptMessage',messageId);
+    }else{
+      Meteor.call('message.declineMessage',messageId);
+    }
+  }
   getAttendance(allAttendance, allStudents){
     if(allAttendance.length>0){
       return data = allStudents.map((student)=>{
@@ -111,7 +118,7 @@ class Dashboard extends Component {
     if(currentUserId){
       if(userInfo){
         if(userInfo.profile.role === "teacher"){
-          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false} allTeacherMessages={allTeacherMessages}/>
+          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false} allTeacherMessages={allTeacherMessages} confirmationEmail={this.confirmationEmail}/>
           userFullName = userInfo.profile.fullName
         } else {
           DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} allStudentMessages={allStudentMessages}/>
