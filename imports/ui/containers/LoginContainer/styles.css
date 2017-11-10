@@ -60,7 +60,7 @@
   margin: 0;
 }
 
-.login-card-container p:hover{
+.links-wrapper:hover{
   text-decoration: underline;
 }
 
