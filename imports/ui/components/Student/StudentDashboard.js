@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StudentMessageList from './StudentMessageList'
 import AttendanceList from './AttendanceList'
-import { Avatar } from 'material-ui'
-import { CircularProgress } from 'material-ui'
+import { Avatar, CircularProgress, Divider } from 'material-ui'
+import AttendanceIcon from 'material-ui/svg-icons/action/dns'
+
 import { MessageContainer } from '../../containers/MessageContainer'
 
 import './styles.css'
@@ -20,7 +21,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
-        <Avatar size={70}>{studentInfo.fullName[0]}</Avatar>
+        <Avatar size={70} backgroundColor='#e2231a'>{studentInfo.fullName[0]}</Avatar>
         <div className="student-info-personal">
           <h1>{studentInfo.fullName}</h1>
           <h2>{studentInfo.program[0].title} student<span> (program start date - finish date)</span></h2>
@@ -65,7 +66,12 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
+      <Divider style={{margin:'50px 0 30px 0'}}/>
+
+      <h2><span><AttendanceIcon color='#e2231a' /></span>Attendance details</h2>
+
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
+      <Divider style={{margin:'30px 0'}}/>
       <StudentMessageList allMessages={allMessages}/>
       <MessageContainer style={style} studentInfo={studentInfo}/>
     </div>

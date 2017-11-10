@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/communication/chat';
+import MessageIcon from 'material-ui/svg-icons/communication/chat';
 import StyledTextField from "../../components/TextField/TextField";
 import { Messages } from '../../../api/messages'
 import moment from 'moment'
@@ -63,7 +63,7 @@ class MessageContainer extends Component{
     return (
       <div className='message-container'>
       <FloatingActionButton onClick={this.handleOpen} >
-        <ContentAdd />
+        <MessageIcon />
       </FloatingActionButton>
         <Dialog
           title="To: Mandi, Mack"

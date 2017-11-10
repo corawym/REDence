@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data'
 import moment from 'moment'
+import { Divider } from 'material-ui'
 
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
@@ -127,6 +128,7 @@ class Dashboard extends Component {
         <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
           <DashTime />
+          <Divider style={{marginBottom:'30px'}}/>
           {DashboardWithRole}
         </section>
       </div>
