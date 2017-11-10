@@ -80,19 +80,6 @@ class Signup extends Component {
 
             <Link to={`/signup`} className="links"> {" "} New user?{" "} </Link>
           </form>
-
-        <br/>
-
-          <form autoComplete="off" onSubmit={this.signUpstudent}>
-            <StyledTextField label="First Name" className="text-field" name="firstName" />
-            <br />
-            <StyledTextField label="Last Name" className="text-field" name="lastName" />
-            <br />
-            <StyledTextField label="email" className="text-field" name="studentEmail" />
-            <br />
-            <StyledTextField label="password" type="password" name="studentPassword" />
-            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" />
-          </form>
         </Paper>
       </div>
     );
