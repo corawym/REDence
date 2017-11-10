@@ -1,18 +1,9 @@
-
-
-/*.form-container{
-  margin: 0 auto;
-  margin-top: 10%;
-  width: 50%;
-  text-align: center;
-  display: block;
-  border-radius: 5;
-  padding: 15px;
-}*/
-
 /* Style - signup */
 /* mostly reuse css from login */
 .signup-page{
   height: auto;
 }
 
+.signup-footer{
+  margin-bottom: 3rem;
+}

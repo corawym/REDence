@@ -26,7 +26,7 @@ class Signup extends Component {
     this.state = {
       value: "a",
       code: "meow"
-    };
+    }
   }
 
   signUpTeacher(e) {
@@ -45,7 +45,7 @@ class Signup extends Component {
         role: 'teacher',
         program: []
       }
-    });
+    })
 
     Teachers.insert({
       fullName: fullName,
@@ -57,7 +57,7 @@ class Signup extends Component {
   handleCode(e) {
     this.setState({
       code: e.target.value
-    });
+    })
   }
 
   render() {
@@ -101,14 +101,14 @@ class Signup extends Component {
 
         </div>
 
-        <p className='login-footer text-center'>Copyright created by Bobby, Cora, Mark in 2017</p>
+        <p className='login-footer signup-footer text-center'>Copyright created by Bobby, Cora, Mark in 2017</p>
       </div>
-    );
+    )
   }
 }
 
 export default withTracker(() => {
   return {
     currentUserId: Meteor.userId()
-  };
-})(Signup);
+  }
+})(Signup)
