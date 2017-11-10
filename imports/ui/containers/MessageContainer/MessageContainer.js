@@ -27,11 +27,11 @@ class MessageContainer extends Component{
   sendMessage(e){
     this.setState({open: false});
     e.preventDefault();
-    let subject = e.target.message.value;
-    let message = e.target.subject.value;
+    let subject = e.target.subject.value;
+    let message = e.target.message.value;
 
     const currentTime = moment().format();
-    
+
     const { studentInfo, allTeachers } = this.props
     let teacherSent = [];
     allTeachers.forEach((teacher) => {
