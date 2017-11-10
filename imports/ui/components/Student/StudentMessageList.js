@@ -1,10 +1,10 @@
 import React from 'react';
 
-const StudentMessageList = ({allMessages}) => {
+const StudentMessageList = ({allStudentMessages}) => {
   return(
     <ul>
       {
-        allMessages.map(message =>{
+        allStudentMessages.map(message =>{
           return <li key={message._id}>{message.message}</li>
         })
       }

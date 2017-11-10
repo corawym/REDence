@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data'
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
 import { Messages } from '../../../api/messages'
+import { Teachers } from '../../../api/teacher'
 
 import { HeaderContainer } from '../HeaderContainer'
 import { DashTime } from '../../components/Time'
@@ -90,7 +91,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { allAttendance, allStudents, userInfo, currentUserId, allMessages } = this.props
+    const { allAttendance, allStudents, userInfo, currentUserId, allStudentMessages, allTeacherMessages } = this.props
     let studentAttendance =[]
     let studentInfo = null
     if(userInfo){
@@ -100,7 +101,7 @@ class Dashboard extends Component {
         }
       })
     }
-
+    console.log(allTeacherMessages);
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
@@ -110,10 +111,10 @@ class Dashboard extends Component {
     if(currentUserId){
       if(userInfo){
         if(userInfo.profile.role === "teacher"){
-          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false}/>
+          DashboardWithRole = <TeacherDashboard handleClick={this.handleClick} submitAttendance={this.submitAttendance} updateAttendance={this.updateAttendance} allAttendance={studentAttendance} attendanceSubmitted={allAttendance.length>0?true:false} allTeacherMessages={allTeacherMessages}/>
           userFullName = userInfo.profile.fullName
         } else {
-          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} allMessages={allMessages}/>
+          DashboardWithRole = <StudentDashboard studentInfo={studentInfo} totalAttendancePercent={totalAttendancePercent} allStudentMessages={allStudentMessages}/>
           userFullName = userInfo.profile.fullName
         }
       }
@@ -140,7 +141,9 @@ export default withTracker(() => {
   Meteor.subscribe('student')
   Meteor.subscribe('attendance')
   Meteor.subscribe('messages')
+  Meteor.subscribe('teacher')
   let studentInfo = null
+  let teacherInfo = null
   if(Meteor.user() && Students.find({}).fetch().length>0){
     studentInfo = Students.find({}).fetch().find(student =>{
       if(student.email === Meteor.user().emails[0].address){
@@ -148,13 +151,23 @@ export default withTracker(() => {
       }
     })
   }
+
+  if(Meteor.user() && Teachers.find({}).fetch().length>0){
+    teacherInfo = Teachers.find({}).fetch().find(teacher =>{
+      if(teacher.email === Meteor.user().emails[0].address){
+        return teacher
+      }
+    })
+  }
+  console.log(teacherInfo);
   return {
     allStudents: Students.find({}).fetch(),
     allAttendance: Attendance.find({date:`${moment().format('DD-MM-YYYY')}`}).fetch(),
     currentUserId: Meteor.userId(),
     userInfo: Meteor.user(),
     
-    allMessages:Messages.find({ sender: { $elemMatch: { _id: `${studentInfo?studentInfo._id:''}`} } }).fetch()
+    allStudentMessages:Messages.find({ sender: { $elemMatch: { _id: `${studentInfo?studentInfo._id:''}`} } }).fetch(),
+    allTeacherMessages:Messages.find({ receiver: { $elemMatch: { _id: `${teacherInfo?teacherInfo._id:''}`} } }).fetch()
   }
 })(Dashboard)
 
