@@ -7,7 +7,8 @@ import ContentAdd from 'material-ui/svg-icons/communication/chat';
 import StyledTextField from "../../components/TextField/TextField";
 import { Messages } from '../../../api/messages'
 import moment from 'moment'
-
+import { withTracker } from 'meteor/react-meteor-data'
+import { Teachers } from '../../../api/teacher'
 
 
 class MessageContainer extends Component{
@@ -29,11 +30,20 @@ class MessageContainer extends Component{
     let subject = e.target.message.value;
     let message = e.target.subject.value;
 
-    const currentTime = moment().format();    
-
+    const currentTime = moment().format();
+    
+    const { studentInfo, allTeachers } = this.props
+    let teacherSent = [];
+    allTeachers.forEach((teacher) => {
+      teacher.programs.forEach(program =>{
+        if(program._id === studentInfo.program[0]._id){
+          teacherSent.push(teacher);
+        }
+      })
+    });
     Messages.insert({
-      sender: this.props.studentInfo._id,
-      // receiver: 
+      sender: [this.props.studentInfo],
+      receiver: teacherSent,
       subject: subject,
       message: message,
       dateSent: currentTime,
@@ -74,4 +84,9 @@ class MessageContainer extends Component{
   }
 }
 
-export default MessageContainer
+export default withTracker(() => {
+  Meteor.subscribe('teacher')
+  return {
+    allTeachers: Teachers.find({}).fetch(),
+  }
+})(MessageContainer)

@@ -143,20 +143,29 @@ Meteor.startup(() => {
 
     Messages.insert({
       message: 'BOBBY IS NAT KEEEWL',
+      subject:'Bobby',
       sender: Students.find({ email: 'bobby@email.com' }).fetch(),
-      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
+      dateSent:moment().format(),
+      status:null
     })
 
     Messages.insert({
       message: 'CORA LOOOOVES DOGS',
+      subject:'Cora',
       sender: Students.find({ email: 'cora@email.com' }).fetch(),
-      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
+      dateSent:moment().format(),
+      status:null
     })
 
     Messages.insert({
       message: 'MARK HAS TOO MANY LATES',
+      subject:'Mark',
       sender: Students.find({ email: 'mark@email.com' }).fetch(),
-      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch()
+      receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
+      dateSent:moment().format(),
+      status:null
     })
 
   }
