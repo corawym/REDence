@@ -42,12 +42,13 @@
 
 .student-stat-subtitle{
   font-size: 0.9rem;
-  margin-top: 0;
+  margin: 0;
+  display: none;
 }
 
 .student-stat-num{
   font-size: 2rem;
-  margin: 0;
+  margin: 15px 0;
 }
 
 .student-stat-overview{
@@ -63,4 +64,11 @@
 .student-overview-num{
   font-size: 3rem;
   margin: 0;
+}
+
+/* Tablet view */
+@media screen and (min-width: 560px) {
+  .student-stat-subtitle{
+    display: block;
+  }
 }
