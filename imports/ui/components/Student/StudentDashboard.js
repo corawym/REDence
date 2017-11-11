@@ -17,15 +17,26 @@ const style = {
   right: '30px'
 }
 
-
 const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
+  let progressColor = null
+  if(totalAttendancePercent === 100){
+    progressColor = 'green'
+  } else if(totalAttendancePercent >= 97){
+    progressColor = 'yellow'
+  } else if(totalAttendancePercent >= 94){
+    progressColor = 'orange'
+  } else if(totalAttendancePercent >= 90){
+    progressColor = 'red'
+  } else if(totalAttendancePercent < 90){
+    progressColor = 'black'
+  } 
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
         <Avatar size={70} backgroundColor='#e2231a'>{studentInfo.fullName[0]}</Avatar>
         <div className="student-info-personal">
           <h1>{studentInfo.fullName}</h1>
-          <h2>{studentInfo.program[0].title} student<span> (program start date - finish date)</span></h2>
+          <h2>{studentInfo.program[0].title} student<span> (program start date - finish date)</span></h2>      
         </div>
       </div>
 
@@ -36,6 +47,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
           size={230}
           thickness={10}
           className="overview-progress-wrapper"
+          color={progressColor}
         />
         <div className="overview-wrapper text-center">
           
