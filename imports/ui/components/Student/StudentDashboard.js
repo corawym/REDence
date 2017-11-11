@@ -15,7 +15,7 @@ const style = {
   right: '30px'
 }
 
-const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) => {
+const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
   let progressColor = null
   if(totalAttendancePercent === 100){
     progressColor = 'green'
@@ -28,7 +28,6 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
   } else if(totalAttendancePercent < 90){
     progressColor = 'black'
   } 
-
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
@@ -79,7 +78,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allMessages}) =>
         </div>
       </div>
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
-      <StudentMessageList allMessages={allMessages}/>
+      <StudentMessageList allStudentMessages={allStudentMessages}/>
       <MessageContainer style={style} studentInfo={studentInfo}/>
     </div>
   )

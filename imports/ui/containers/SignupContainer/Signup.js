@@ -1,13 +1,24 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { withTracker } from "meteor/react-meteor-data";
+import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom'
+import { withTracker } from 'meteor/react-meteor-data'
 
-import Paper from 'material-ui/Paper'
-import RaisedButton from "material-ui/RaisedButton";
+import { Paper, FlatButton } from 'material-ui'
 
-import "./styles.css";
+import './styles.css'
 import { Teachers } from '../../../api/teacher'
-import StyledTextField from "../../components/TextField/TextField";
+import StyledTextField from "../../components/TextField/TextField"
+
+
+const styles = {
+  style: {
+    borderRadius:'18px', 
+    margin:'50px 0 15px 0'
+  },
+  labelStyle: {
+    color:'white', 
+    fontFamily:'"Ubuntu", sans-serif'
+  }
+}
 
 class Signup extends Component {
   constructor(props) {
@@ -15,7 +26,7 @@ class Signup extends Component {
     this.state = {
       value: "a",
       code: "meow"
-    };
+    }
   }
 
   signUpTeacher(e) {
@@ -34,7 +45,7 @@ class Signup extends Component {
         role: 'teacher',
         program: []
       }
-    });
+    })
 
     Teachers.insert({
       fullName: fullName,
@@ -46,7 +57,7 @@ class Signup extends Component {
   handleCode(e) {
     this.setState({
       code: e.target.value
-    });
+    })
   }
 
   render() {
@@ -59,35 +70,45 @@ class Signup extends Component {
     }
 
     return (
-      <div>
-        <Paper zDepth={4} className='form-container'>
-          <form autoComplete="off" onSubmit={this.signUpTeacher}>
-            <StyledTextField label="First Name" className="text-field" name="firstName" />
-            <br />
-            <StyledTextField label="Last Name" className="text-field" name="lastName" />
-            <br />
-            <StyledTextField label="email" className="text-field" name="teacherEmail" />
-            <br />
-            <StyledTextField label="password" type="password" name="teacherPassword" />
+      <div className='login-page signup-page'>
 
-            <p> Teacher Code </p>
+        <div className='login-page-wrapper'>
+          <h1 className='login-header text-center'>RED<span>en:ce</span></h1>
+          <h2 className='login-header-subtitle text-center'>Take attendance and Check attendance easier</h2>
+          
+          <Paper zDepth={1} className='login-card-container'>
+            <p className='main-font-family'>For new teachers only</p>
+            <form autoComplete='off' onSubmit={this.signUpTeacher}>
+              <StyledTextField label='First Name' name='firstName' />
+              <StyledTextField label='Last Name' name='lastName' />
+              <StyledTextField label='Email' name='teacherEmail' />
+              <StyledTextField label='Password' type='password' name='teacherPassword' />
+              <StyledTextField onChange={e => this.handleCode(e)} label='Teacher code' name='code' value={this.state.code} />
 
-            <StyledTextField onChange={e => this.handleCode(e)} label="teacher code" name="code" value={this.state.code} />
+              <FlatButton 
+              disabled={this.state.code === "hi" ? false : true}
+              type='submit' 
+              fullWidth={true}
+              label='Sign up' 
+              labelStyle={styles.labelStyle} 
+              backgroundColor='#e2231a'
+              hoverColor='#313131'
+              style={styles.style}/>
 
-            <Link to={`/signup`} className="links"> {" "} Forgot password?{" "} </Link>
+              <p className='text-center links-wrapper'><Link to={`/login`} className='links main-font-family'> Returning teachers and students? </Link></p>
+            </form>
+          </Paper>
 
-            <RaisedButton label="Sign up" primary={true} style={{ width: "95%" }} type="submit" disabled={this.state.code === "hi" ? false : true} />
+        </div>
 
-            <Link to={`/signup`} className="links"> {" "} New user?{" "} </Link>
-          </form>
-        </Paper>
+        <p className='login-footer signup-footer text-center'>Copyright created by Bobby, Cora, Mark in 2017</p>
       </div>
-    );
+    )
   }
 }
 
 export default withTracker(() => {
   return {
     currentUserId: Meteor.userId()
-  };
-})(Signup);
+  }
+})(Signup)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { withTracker } from "meteor/react-meteor-data"
+import { withTracker } from 'meteor/react-meteor-data'
 
 import { Paper, FlatButton } from 'material-ui'
 
@@ -50,10 +50,11 @@ class Login extends Component {
           <h2 className='login-header-subtitle text-center'>Take attendance and Check attendance easier</h2>
           
           <Paper zDepth={1} className='login-card-container'>
+            <p className='main-font-family'>For both teachers and students</p>
             <form autoComplete='off' onSubmit={this.logIn}>
-              <StyledTextField label='Email' className='text-field' name='loginEmail'/>
+              <StyledTextField label='Email' name='loginEmail'/>
               <StyledTextField label='Password' type='password' name='loginPass'/>
-              <p><Link to={`/signup`} className='links main-font-family'> Forgot password? </Link></p>
+              <p className='links-wrapper'><Link to={`/signup`} className='links main-font-family'> Forgot password? </Link></p>
 
               <FlatButton 
               type='submit' 
@@ -64,7 +65,7 @@ class Login extends Component {
               hoverColor='#313131'
               style={styles.style}/>
 
-              <p className='text-center'><Link to={`/signup`} className='links main-font-family'> New user? </Link></p>
+              <p className='text-center links-wrapper'><Link to={`/signup`} className='links main-font-family'> New teachers? </Link></p>
             </form>
           </Paper>
 
