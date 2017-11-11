@@ -8,7 +8,8 @@ import './styles.css'
 const styles = {
   style: {
     borderRadius:'18px', 
-    padding:'0 16px'
+    padding:'0 16px',
+    border:'1px solid #313131'
   },
   labelStyle: { 
     color:'#969696',
@@ -28,7 +29,7 @@ const Header = ({logOut, userFullName}) => (
       <FlatButton 
         label="Logout" 
         className="button-logout" 
-        backgroundColor="#e2e2e2" 
+        backgroundColor="white" 
         hoverColor='#313131'
         style={styles.style} 
         labelStyle={styles.labelStyle} 
