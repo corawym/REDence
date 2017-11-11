@@ -62,7 +62,7 @@ class MessageContainer extends Component{
 
     return (
       <div className='message-container'>
-      <FloatingActionButton onClick={this.handleOpen} >
+      <FloatingActionButton onClick={this.handleOpen} backgroundColor='#e2231a'>
         <MessageIcon />
       </FloatingActionButton>
         <Dialog

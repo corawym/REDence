@@ -11,10 +11,10 @@ import {
 
 const AttendanceList = ({missedDates, lateDates, sickDates}) => {
   return(
-    <Table allRowsSelected={false}>
+    <Table allRowsSelected={false} bodyStyle={{marginBottom:'50px'}}>
       <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
         <TableRow>
-          <TableHeaderColumn>No.</TableHeaderColumn> 
+          <TableHeaderColumn></TableHeaderColumn> 
           <TableHeaderColumn>Date</TableHeaderColumn> 
           <TableHeaderColumn>Status</TableHeaderColumn> 
         </TableRow>

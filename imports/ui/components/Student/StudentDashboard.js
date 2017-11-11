@@ -4,6 +4,7 @@ import StudentMessageList from './StudentMessageList'
 import AttendanceList from './AttendanceList'
 import { Avatar, CircularProgress, Divider } from 'material-ui'
 import AttendanceIcon from 'material-ui/svg-icons/action/dns'
+import MessageIcon from 'material-ui/svg-icons/communication/email'
 
 import { MessageContainer } from '../../containers/MessageContainer'
 
@@ -66,14 +67,23 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
+
       <Divider style={{margin:'50px 0 30px 0'}}/>
+      <div className="display-flex">
+        <AttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
+        <h2 className='dashboard-section-name'>Attendance details</h2>
+      </div>
+      
+      <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates} />
 
-      <h2><span><AttendanceIcon color='#e2231a' /></span>Attendance details</h2>
+      <Divider style={{margin:'50px 0 30px 0'}}/>
+      <div className="display-flex">
+        <MessageIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
+        <h2 className='dashboard-section-name'>Messages</h2>
+      </div>
 
-      <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
-
-      <Divider style={{margin:'30px 0'}}/>
       <StudentMessageList allStudentMessages={allStudentMessages}/>
+
       <MessageContainer style={style} studentInfo={studentInfo}/>
     </div>
   )
