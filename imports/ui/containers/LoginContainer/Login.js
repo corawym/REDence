@@ -57,13 +57,14 @@ class Login extends Component {
               <p className='links-wrapper'><Link to={`/signup`} className='links main-font-family'> Forgot password? </Link></p>
 
               <FlatButton 
-              type='submit' 
-              fullWidth={true}
-              label='Log in' 
-              labelStyle={styles.labelStyle} 
-              backgroundColor='#e2231a'
-              hoverColor='#313131'
-              style={styles.style}/>
+                type='submit' 
+                fullWidth={true}
+                label='Log in' 
+                labelStyle={styles.labelStyle} 
+                backgroundColor='#e2231a'
+                hoverColor='#313131'
+                style={styles.style}
+              />
 
               <p className='text-center links-wrapper'><Link to={`/signup`} className='links main-font-family'> New teachers? </Link></p>
             </form>

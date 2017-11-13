@@ -103,6 +103,10 @@
   color: #e2231a;
 }
 
+.message-waiting{
+  color:#313131;
+}
+
 .message-context{
   margin-top: 0;
   color: #313131;
