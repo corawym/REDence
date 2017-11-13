@@ -18,7 +18,15 @@ import './styles.css'
 
 class Dashboard extends Component {
   state={
-    studentAttendance:[]
+    studentAttendance:[],
+    dashTime : moment().format('LT')
+  }
+  componentDidMount = () => {
+    setInterval(() => {
+      this.setState({
+        dashTime : moment().format('LT')
+      })
+    },1000)
   }
   handleClick= (e,id) => {
     let { studentAttendance } = this.state
@@ -37,12 +45,10 @@ class Dashboard extends Component {
     })
   }
   submitAttendance = () => {
-    console.log("submit");
     const { studentAttendance } = this.state
     Meteor.call('attendance.submitAttendance',studentAttendance);
   }
   updateAttendance = () => {
-    console.log('update');
     const { studentAttendance } = this.state
     const { allAttendance } = this.props
     studentAttendance.forEach(attendance => {
@@ -108,7 +114,6 @@ class Dashboard extends Component {
         }
       })
     }
-    console.log(allTeacherMessages);
     const totalAttendancePercent = this.getTotalAttendancePercent(studentInfo)
 
     studentAttendance = this.getAttendance(allAttendance, allStudents)
@@ -133,8 +138,12 @@ class Dashboard extends Component {
       <div>
         <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
+<<<<<<< HEAD
           <DashTime />
           <Divider style={{margin:'50px 0 50px 0'}}/>
+=======
+          <DashTime dashTime={this.state.dashTime}/>
+>>>>>>> 65555bdd725d644fac2bc78e08a1b613abb49cc8
           {DashboardWithRole}
         </section>
       </div>
@@ -164,7 +173,6 @@ export default withTracker(() => {
       }
     })
   }
-  console.log(teacherInfo);
   return {
     allStudents: Students.find({}).fetch(),
     allAttendance: Attendance.find({date:`${moment().format('DD-MM-YYYY')}`}).fetch(),
