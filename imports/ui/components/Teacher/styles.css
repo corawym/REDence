@@ -1,0 +1,27 @@
+.position-center{
+  display: flex;
+  justify-content: center;
+}
+
+.message-name{
+  font-size: 0.9rem;
+  margin: 5px 0 9px 0;
+  color: #e2231a;
+}
+
+.message-time-lighter{
+  color: #969696;
+  margin-left: 10px;
+}
+
+.message-status-darker{
+  text-transform: uppercase;
+  margin-left: 40px;
+  font-weight: 700;
+  color: #313131;
+}
+
+.message-buttons{
+  text-align: right;
+}
+
