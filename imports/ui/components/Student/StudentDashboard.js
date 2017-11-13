@@ -80,7 +80,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
         </div>
       </div>
 
-      <Divider style={{margin:'50px 0 30px 0'}}/>
+      <Divider style={{margin:'50px 0 50px 0'}}/>
       <div className="display-flex">
         <AttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Attendance details</h2>
@@ -88,7 +88,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
       
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates} />
 
-      <Divider style={{margin:'50px 0 30px 0'}}/>
+      <Divider style={{margin:'50px 0 50px 0'}}/>
       <div className="display-flex">
         <MessageIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Messages</h2>

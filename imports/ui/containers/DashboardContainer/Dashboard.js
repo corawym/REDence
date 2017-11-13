@@ -129,18 +129,15 @@ class Dashboard extends Component {
       return <Redirect to='/login' />
     }
 
-    
     return (
-
       <div>
         <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
           <DashTime />
-          <Divider style={{marginBottom:'30px'}}/>
+          <Divider style={{margin:'50px 0 50px 0'}}/>
           {DashboardWithRole}
         </section>
       </div>
-
     )
   }
 }
