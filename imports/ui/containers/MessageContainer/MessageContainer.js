@@ -1,15 +1,22 @@
-import React, { Component } from "react";
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import MessageIcon from 'material-ui/svg-icons/communication/chat';
-import StyledTextField from "../../components/TextField/TextField";
-import { Messages } from '../../../api/messages'
+import React, { Component } from 'react'
 import moment from 'moment'
 import { withTracker } from 'meteor/react-meteor-data'
+import { Dialog, FlatButton, RaisedButton, FloatingActionButton } from 'material-ui'
+import MessageIcon from 'material-ui/svg-icons/communication/chat'
+
+import { Messages } from '../../../api/messages'
 import { Teachers } from '../../../api/teacher'
 
+import StyledTextField from '../../components/TextField/TextField'
+
+
+const styles = {
+  FloatingActionButton: {
+    position:'fixed',
+    bottom:'20px',
+    right:'20px',
+  }
+}
 
 class MessageContainer extends Component{
   state = {
@@ -62,9 +69,9 @@ class MessageContainer extends Component{
 
     return (
       <div className='message-container'>
-      <FloatingActionButton onClick={this.handleOpen} backgroundColor='#313131'>
-        <MessageIcon />
-      </FloatingActionButton>
+        <FloatingActionButton onClick={this.handleOpen} backgroundColor='#313131' style={styles.FloatingActionButton} className='message-floating-btn'>
+          <MessageIcon />
+        </FloatingActionButton>
         <Dialog
           title="To: Mandi, Mack"
           actions={actions}

@@ -11,12 +11,6 @@ import { MessageContainer } from '../../containers/MessageContainer'
 import './styles.css'
 
 const styles = {
-  // style:{
-  //   border: '3px solid pink',
-  //   position: 'fixed',
-  //   bottom: '30px',
-  //   right: '30px'
-  // },
   dividerStyle:{
     margin:'50px 0 50px 0'
   }
@@ -100,7 +94,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
         <h2 className='dashboard-section-name'>Messages</h2>
       </div>
 
-      <StudentMessageList allStudentMessages={allStudentMessages}/>
+      <StudentMessageList allStudentMessages={allStudentMessages} studentInfo={studentInfo}/>
 
       <MessageContainer  studentInfo={studentInfo}/>
     </div>

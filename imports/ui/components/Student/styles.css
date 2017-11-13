@@ -75,6 +75,40 @@
   margin-left: 17px;
 } 
 
+/* Style - student dashboard message */
+.dashboard-student-message{
+  list-style: none;
+  padding-left: 0;
+}
+
+.dashboard-message-container{
+  margin-bottom: 30px;
+}
+
+.message-avatar{
+  margin-right: 20px;
+  min-width: 50px;
+}
+
+.message-time{
+  font-size: 0.9rem;
+  margin: 5px 0 9px 0;
+  color: #313131;
+}
+
+.message-status{
+  text-transform: uppercase;
+  margin-left: 40px;
+  font-weight: 700;
+  color: #e2231a;
+}
+
+.message-context{
+  margin-top: 0;
+  color: #313131;
+  line-height: 1.6rem;
+}
+
 /* Tablet view */
 @media screen and (min-width: 560px) {
   .student-stat-subtitle{
