@@ -31,8 +31,7 @@ const styles = {
     fontSize:'14px'
   },
   tdLeftStyle: {
-    fontSize:'14px',
-    paddingLeft:'0'
+    fontSize:'14px'
   }
 }
 
@@ -55,10 +54,10 @@ const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
               <TableRowColumn style={styles.tdLeftStyle}>{student.fullName}</TableRowColumn>
 
 
-              <TableRowColumn style={styles.tdStyle}><input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'attend'}/> </TableRowColumn>
-              <TableRowColumn style={styles.tdStyle}><input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'late'}/></TableRowColumn>
-              <TableRowColumn style={styles.tdStyle}><input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'absent'}/></TableRowColumn>
-              <TableRowColumn style={styles.tdStyle}><input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'exception'}/></TableRowColumn>
+              <TableRowColumn><input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'attend'}/></TableRowColumn>
+              <TableRowColumn><input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'late'}/></TableRowColumn>
+              <TableRowColumn><input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'absent'}/></TableRowColumn>
+              <TableRowColumn><input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'exception'}/></TableRowColumn>
 
 
               <TableRowColumn style={styles.tdStyle}>{totalAtt.toFixed(2)}</TableRowColumn>
