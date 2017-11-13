@@ -1,19 +1,20 @@
-import React, { Component } from "react";
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import StyledTextField from "../../components/TextField/TextField";
+import React, { Component } from 'react'
+import { Dialog, FlatButton, RaisedButton } from 'material-ui'
+import StyledTextField from '../../components/TextField/TextField'
+import { withTracker } from 'meteor/react-meteor-data'
+
 import { Students } from '../../../api/student'
 import { Programs } from '../../../api/program'
-import { withTracker } from 'meteor/react-meteor-data'
+
 
 const styles = {
   style: {
     borderRadius:'18px', 
-    margin:'50px 0 15px 0'
+    marginBottom:'15px',
+    padding:'0 16px',
   },
   labelStyle: {
-    color:'white', 
+    color:'#313131', 
     fontFamily:'"Ubuntu", sans-serif'
   }
 }
@@ -54,11 +55,11 @@ class RegisterContainer extends Component{
 
     return (
       <div className='message-container'>
-      <RaisedButton onClick={this.handleOpen} 
-        label='Add new student' 
-        labelStyle={styles.labelStyle} 
-        backgroundColor='#e2231a'
-        style={styles.style}/>
+        <FlatButton onClick={this.handleOpen} 
+          label='+ Add new student' 
+          labelStyle={styles.labelStyle} 
+          backgroundColor='#f6f6f6'
+          style={styles.style}/>
 
         <Dialog
           title="Add new student:"

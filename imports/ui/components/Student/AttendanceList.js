@@ -18,16 +18,16 @@ const styles = {
   bodyStyle: {
     marginBottom:'50px'
   },
-  trStyle:{
-    border: 'none'
+  trStyle: {
+    border:'none'
   },
-  thStyle:{
-    border: 'none'
+  thStyle: {
+    border:'none'
   },
   thcStyle: {
     fontSize:'16px'
   },
-  tdStyle:{
+  tdStyle: {
     fontSize:'14px'
   }
 }
