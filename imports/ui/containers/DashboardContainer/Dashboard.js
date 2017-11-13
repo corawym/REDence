@@ -138,12 +138,8 @@ class Dashboard extends Component {
       <div>
         <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
-<<<<<<< HEAD
-          <DashTime />
-          <Divider style={{margin:'50px 0 50px 0'}}/>
-=======
           <DashTime dashTime={this.state.dashTime}/>
->>>>>>> 65555bdd725d644fac2bc78e08a1b613abb49cc8
+          <Divider style={{margin:'50px 0 50px 0'}}/>
           {DashboardWithRole}
         </section>
       </div>
