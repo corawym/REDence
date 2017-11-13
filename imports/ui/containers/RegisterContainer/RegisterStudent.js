@@ -35,33 +35,12 @@ class RegisterContainer extends Component{
   registerStudent(e){
     this.setState({open: false});
     e.preventDefault();
+    
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
     let email = e.target.email.value
     let fullName = `${firstName} ${lastName}`
-
-    const studentUserInfo = Accounts.createUser({
-      email: email,
-      password: 'pass',
-      profile: {
-        fullName: fullName,  
-        firstName: firstName,
-        lastName: lastName,      
-        role: 'student',
-        program: [{ title: 'App Dev' }]
-      }
-    })
-
-    Students.insert({
-      fullName: fullName,
-      program: [{ title: 'App Dev' }],
-      email: email,
-      role: 'student',
-      missedDates: [],
-      lateDates: [],
-      sickDates: [],
-      total: 90
-    })
+    Meteor.call('student.addStudent', firstName, lastName, email, fullName);
   }
 
   render() {
