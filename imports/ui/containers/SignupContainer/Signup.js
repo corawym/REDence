@@ -17,6 +17,10 @@ const styles = {
   labelStyle: {
     color:'white', 
     fontFamily:'"Ubuntu", sans-serif'
+  },
+  labelDisableStyle: {
+    color:'#969696', 
+    fontFamily:'"Ubuntu", sans-serif'
   }
 }
 
@@ -86,14 +90,15 @@ class Signup extends Component {
               <StyledTextField onChange={e => this.handleCode(e)} label='Teacher code' name='code' value={this.state.code} />
 
               <FlatButton 
-              disabled={this.state.code === "hi" ? false : true}
-              type='submit' 
-              fullWidth={true}
-              label='Sign up' 
-              labelStyle={styles.labelStyle} 
-              backgroundColor='#e2231a'
-              hoverColor='#313131'
-              style={styles.style}/>
+                disabled={this.state.code === "hi" ? false : true}
+                type='submit' 
+                fullWidth={true}
+                label='Sign up' 
+                labelStyle={this.state.code === "hi" ? styles.labelStyle : styles.labelDisableStyle } 
+                backgroundColor={this.state.code === "hi" ? '#e2231a' : '#f6f6f6'}
+                hoverColor='#313131'
+                style={styles.style}
+              />
 
               <p className='text-center links-wrapper'><Link to={`/login`} className='links main-font-family'> Returning teachers and students? </Link></p>
             </form>
