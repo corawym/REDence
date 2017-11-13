@@ -6,6 +6,7 @@ import { Paper, FlatButton } from 'material-ui'
 
 import './styles.css'
 import { Teachers } from '../../../api/teacher'
+import { Programs } from '../../../api/program'
 import StyledTextField from "../../components/TextField/TextField"
 
 
@@ -50,7 +51,8 @@ class Signup extends Component {
     Teachers.insert({
       fullName: fullName,
       email: email,
-      role: 'teacher'
+      role: 'teacher',
+      programs: Programs.find({ $or: [{title: 'Web Dev'}, {title: 'App Dev'} ]}).fetch()
     })
   }
 
