@@ -35,6 +35,4 @@ meteor
 ```
 
 ## Authors
-Cora Wong
-Mark Flores
-Bobby Soetarto
+Cora Wong - Mark Flores - Bobby Soetarto
