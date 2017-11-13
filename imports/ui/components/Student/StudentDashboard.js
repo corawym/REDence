@@ -2,17 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import StudentMessageList from './StudentMessageList'
 import AttendanceList from './AttendanceList'
-import { Avatar } from 'material-ui'
-import { CircularProgress } from 'material-ui'
+import { Avatar, CircularProgress, Divider } from 'material-ui'
+import AttendanceIcon from 'material-ui/svg-icons/action/dns'
+import MessageIcon from 'material-ui/svg-icons/communication/email'
+
 import { MessageContainer } from '../../containers/MessageContainer'
 
 import './styles.css'
 
-const style = {
-  border: '3px solid pink',
-  position: 'fixed',
-  bottom: '30px',
-  right: '30px'
+const styles = {
+  dividerStyle:{
+    margin:'50px 0 50px 0'
+  }
+  
 }
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
@@ -31,7 +33,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
   return(
     <div className="student-info-container">
       <div className="student-info-wrapper display-flex">
-        <Avatar size={70}>{studentInfo.fullName[0]}</Avatar>
+        <Avatar size={70} backgroundColor='#e2231a'>{studentInfo.fullName[0]}</Avatar>
         <div className="student-info-personal">
           <h1>{studentInfo.fullName}</h1>
           <h2>{studentInfo.program[0].title} student<span> (program start date - finish date)</span></h2>      
@@ -77,9 +79,24 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
           <p className="student-stat-num">{studentInfo.sickDates.length}</p>
         </div>
       </div>
-      <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates}/>
-      <StudentMessageList allStudentMessages={allStudentMessages}/>
-      <MessageContainer style={style} studentInfo={studentInfo}/>
+
+      <Divider style={styles.dividerStyle}/>
+      <div className="display-flex">
+        <AttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
+        <h2 className='dashboard-section-name'>Attendance details</h2>
+      </div>
+      
+      <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates} />
+
+      <Divider style={styles.dividerStyle}/>
+      <div className="display-flex">
+        <MessageIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
+        <h2 className='dashboard-section-name'>Messages</h2>
+      </div>
+
+      <StudentMessageList allStudentMessages={allStudentMessages} studentInfo={studentInfo}/>
+
+      <MessageContainer  studentInfo={studentInfo}/>
     </div>
   )
 }

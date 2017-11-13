@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-
 import { withTracker } from 'meteor/react-meteor-data'
+import moment from 'moment'
+import { Divider } from 'material-ui'
 
 import { Students } from '../../../api/student'
 import { Attendance } from '../../../api/attendance'
@@ -12,7 +13,6 @@ import { HeaderContainer } from '../HeaderContainer'
 import { DashTime } from '../../components/Time'
 import { TeacherDashboard } from '../../components/Teacher'
 import { StudentDashboard } from '../../components/Student'
-import moment from 'moment'
 
 import './styles.css'
 
@@ -135,15 +135,14 @@ class Dashboard extends Component {
     }
 
     return (
-
       <div>
         <HeaderContainer logOut={this.logout} userFullName={userFullName}/>
         <section className="dashboard">
           <DashTime dashTime={this.state.dashTime}/>
+          <Divider style={{margin:'50px 0 50px 0'}}/>
           {DashboardWithRole}
         </section>
       </div>
-
     )
   }
 }

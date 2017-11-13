@@ -1,15 +1,38 @@
-import React, { Component } from "react";
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/communication/chat';
-import StyledTextField from "../../components/TextField/TextField";
-import { Messages } from '../../../api/messages'
+import React, { Component } from 'react'
 import moment from 'moment'
 import { withTracker } from 'meteor/react-meteor-data'
+import { Dialog, FlatButton, RaisedButton, FloatingActionButton } from 'material-ui'
+import MessageIcon from 'material-ui/svg-icons/communication/chat'
+
+import { Messages } from '../../../api/messages'
 import { Teachers } from '../../../api/teacher'
 
+import StyledTextField from '../../components/TextField/TextField'
+
+
+const styles = {
+  FloatingActionButton: {
+    position:'fixed',
+    bottom:'20px',
+    right:'20px',
+  },
+  titleStyle: {
+    fontSize:'1rem',
+    fontFamily:'"Ubuntu", sans-serif',
+  },
+  flatButtonStyle: {
+    fontFamily:'"Ubuntu", sans-serif',
+    borderRadius:'18px',
+    padding:'0 16px',
+    margin: '0 15px 30px 0'
+  },
+  sendLabelStyle: {
+    color:'white'
+  },
+  cancelLabelStyle:{
+    color:'#969696'
+  }
+}
 
 class MessageContainer extends Component{
   state = {
@@ -57,26 +80,35 @@ class MessageContainer extends Component{
         label="Cancel"
         primary={true}
         onClick={this.handleClose}
-      />
+        style={styles.flatButtonStyle}
+        labelStyle={styles.cancelLabelStyle}
+      />,
+      <FlatButton
+        label="Send"
+        style={styles.flatButtonStyle} 
+        type="submit"
+        labelStyle={styles.sendLabelStyle}
+        backgroundColor="#e2231a"
+      />,
     ];
 
     return (
       <div className='message-container'>
-      <FloatingActionButton onClick={this.handleOpen} >
-        <ContentAdd />
-      </FloatingActionButton>
+        <FloatingActionButton onClick={this.handleOpen} backgroundColor='#313131' style={styles.FloatingActionButton} className='message-floating-btn'>
+          <MessageIcon />
+        </FloatingActionButton>
         <Dialog
           title="To: Mandi, Mack"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          titleStyle={styles.titleStyle}
         >
           <form autoComplete="off" onSubmit={(e) => this.sendMessage(e)}>
             <StyledTextField label="Subject" className="text-field" name="subject" />
-              <br />
             <StyledTextField label="Message" className="text-field" name="message" />
-            <RaisedButton label="Send" primary={true} style={{ width: "95%" }} type="submit" />
+            
           </form>
         </Dialog>
       </div>

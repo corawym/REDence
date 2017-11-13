@@ -14,3 +14,7 @@
   margin-bottom: 5px;
   text-decoration: none;
 }
+
+.message-floating-btn button{
+  width: 100px;
+}
