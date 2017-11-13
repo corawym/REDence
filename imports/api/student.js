@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo'
+import { Programs } from './program'
 
 export const Students = new Mongo.Collection('student')
 
@@ -12,13 +13,13 @@ Meteor.methods({
         firstName: firstName,
         lastName: lastName,      
         role: 'student',
-        program: [{ title: 'App Dev' }]
+        program: Programs.find({title:'App Dev'}).fetch()
       }
     })
 
     Students.insert({
       fullName: fullName,
-      program: [{ title: 'App Dev' }],
+      program: Programs.find({title:'App Dev'}).fetch(),
       email: email,
       role: 'student',
       missedDates: [],

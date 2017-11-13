@@ -10,7 +10,7 @@ const TeacherDashboard = ({ handleClick, submitAttendance, allAttendance, attend
     <div>
       <DashTable tableHeaderColumn={['Student','Attend','Late','Absence','Exception','Total']} allAttendance={allAttendance} handleClick={handleClick}/>
       <RaisedButton label="Submit" primary={true} onClick={attendanceSubmitted ? updateAttendance : submitAttendance}/>
-      <RegisterContainer />
+      {attendanceSubmitted ? false: <RegisterContainer />}
       <TeacherMailList allTeacherMessages={allTeacherMessages} confirmationEmail={confirmationEmail}/>
     </div>
   )
