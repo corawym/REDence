@@ -24,7 +24,7 @@ const styles = {
     fontFamily:'"Ubuntu", sans-serif',
     borderRadius:'18px',
     padding:'0 16px',
-    margin: '0 15px 30px 0'
+    margin: '30px 15px 30px 0'
   },
   sendLabelStyle: {
     color:'white'
@@ -90,12 +90,24 @@ class MessageContainer extends Component{
           <form autoComplete="off" onSubmit={(e) => this.sendMessage(e)}>
             <StyledTextField label="Subject" className="text-field" name="subject" />
             <StyledTextField label="Message" className="text-field" name="message" />
-            <FlatButton label="Send" style={styles.flatButtonStyle} type="submit" labelStyle={styles.sendLabelStyle} backgroundColor="#e2231a"/>
-            <FlatButton label="Cancel" primary={true} onClick={this.handleClose} style={styles.flatButtonStyle} labelStyle={styles.cancelLabelStyle}/>            
+            <FlatButton 
+              label="Send" 
+              style={styles.flatButtonStyle} 
+              type="submit" 
+              labelStyle={styles.sendLabelStyle} 
+              backgroundColor="#e2231a"
+              hoverColor="#313131"
+            />
+            <FlatButton 
+              label="Cancel" 
+              onClick={this.handleClose} 
+              style={styles.flatButtonStyle} 
+              labelStyle={styles.cancelLabelStyle}
+            />            
           </form>
         </Dialog>
       </div>
-    );
+    )
   }
 }
 
