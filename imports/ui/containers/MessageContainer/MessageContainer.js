@@ -75,23 +75,6 @@ class MessageContainer extends Component{
   }
 
   render() {
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onClick={this.handleClose}
-        style={styles.flatButtonStyle}
-        labelStyle={styles.cancelLabelStyle}
-      />,
-      <FlatButton
-        label="Send"
-        style={styles.flatButtonStyle} 
-        type="submit"
-        labelStyle={styles.sendLabelStyle}
-        backgroundColor="#e2231a"
-      />,
-    ];
-
     return (
       <div className='message-container'>
         <FloatingActionButton onClick={this.handleOpen} backgroundColor='#313131' style={styles.FloatingActionButton} className='message-floating-btn'>
@@ -99,7 +82,6 @@ class MessageContainer extends Component{
         </FloatingActionButton>
         <Dialog
           title="To: Mandi, Mack"
-          actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -108,7 +90,8 @@ class MessageContainer extends Component{
           <form autoComplete="off" onSubmit={(e) => this.sendMessage(e)}>
             <StyledTextField label="Subject" className="text-field" name="subject" />
             <StyledTextField label="Message" className="text-field" name="message" />
-            
+            <FlatButton label="Send" style={styles.flatButtonStyle} type="submit" labelStyle={styles.sendLabelStyle} backgroundColor="#e2231a"/>
+            <FlatButton label="Cancel" primary={true} onClick={this.handleClose} style={styles.flatButtonStyle} labelStyle={styles.cancelLabelStyle}/>            
           </form>
         </Dialog>
       </div>
