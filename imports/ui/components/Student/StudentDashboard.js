@@ -10,11 +10,17 @@ import { MessageContainer } from '../../containers/MessageContainer'
 
 import './styles.css'
 
-const style = {
-  border: '3px solid pink',
-  position: 'fixed',
-  bottom: '30px',
-  right: '30px'
+const styles = {
+  // style:{
+  //   border: '3px solid pink',
+  //   position: 'fixed',
+  //   bottom: '30px',
+  //   right: '30px'
+  // },
+  dividerStyle:{
+    margin:'50px 0 50px 0'
+  }
+  
 }
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
@@ -80,7 +86,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
         </div>
       </div>
 
-      <Divider style={{margin:'50px 0 50px 0'}}/>
+      <Divider style={styles.dividerStyle}/>
       <div className="display-flex">
         <AttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Attendance details</h2>
@@ -88,7 +94,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
       
       <AttendanceList missedDates={studentInfo.missedDates} lateDates={studentInfo.lateDates} sickDates={studentInfo.sickDates} />
 
-      <Divider style={{margin:'50px 0 50px 0'}}/>
+      <Divider style={styles.dividerStyle}/>
       <div className="display-flex">
         <MessageIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Messages</h2>
@@ -96,7 +102,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
 
       <StudentMessageList allStudentMessages={allStudentMessages}/>
 
-      <MessageContainer style={style} studentInfo={studentInfo}/>
+      <MessageContainer  studentInfo={studentInfo}/>
     </div>
   )
 }

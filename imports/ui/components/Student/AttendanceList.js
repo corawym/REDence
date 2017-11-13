@@ -13,18 +13,18 @@ import {
 const styles = {
   style: {
     fontFamily:'"Ubuntu", sans-serif',
-    color:'#969696',
-
+    color:'#969696'
   },
   bodyStyle: {
-    marginBottom:'50px',
-
+    marginBottom:'50px'
   },
   trStyle:{
-    border: 'none',
-    
+    border: 'none'
   },
-  thStyle: {
+  thStyle:{
+    border: 'none'
+  },
+  thcStyle: {
     fontSize:'16px'
   },
   tdStyle:{
@@ -35,11 +35,11 @@ const styles = {
 const AttendanceList = ({missedDates, lateDates, sickDates}) => {
   return(
     <Table allRowsSelected={false} bodyStyle={styles.bodyStyle} style={styles.style}>
-      <TableHeader displaySelectAll={false} adjustForCheckbox={false} >
-        <TableRow >
+      <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{border:'none'}}>
+        <TableRow style={styles.trStyle}>
           <TableHeaderColumn></TableHeaderColumn>
-          <TableHeaderColumn style={styles.thStyle}>Status</TableHeaderColumn> 
-          <TableHeaderColumn style={styles.thStyle}>Date</TableHeaderColumn> 
+          <TableHeaderColumn style={styles.thcStyle}>Status</TableHeaderColumn> 
+          <TableHeaderColumn style={styles.thcStyle}>Date</TableHeaderColumn> 
         </TableRow>
       </TableHeader>
       <TableBody displayRowCheckbox={false} showRowHover={true}>
