@@ -25,10 +25,13 @@ const styles = {
     fontFamily:'"Ubuntu", sans-serif',
     borderRadius:'18px',
     padding:'0 16px',
-    margin: '0 15px 30px 0'
+    margin: '30px 15px 30px 0'
   },
   cancelLabelStyle:{
     color:'#969696'
+  },
+  addLabelStyle:{
+    color:'white'
   }
 }
 
@@ -58,14 +61,6 @@ class RegisterContainer extends Component{
   }
 
   render() {
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        onClick={this.handleClose}
-        style={styles.flatButtonStyle}
-        labelStyle={styles.cancelLabelStyle}
-      />
-    ];
 
     return (
       <div className='message-container'>
@@ -73,11 +68,12 @@ class RegisterContainer extends Component{
           label='+ Add new student' 
           labelStyle={styles.labelStyle} 
           backgroundColor='#f6f6f6'
-          style={styles.style}/>
+          style={styles.style}
+          hoverColor="#969696"
+        />
 
         <Dialog
           title="Add a new student"
-          actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -87,11 +83,25 @@ class RegisterContainer extends Component{
             <StyledTextField label="First Name" className="text-field" name="firstName" />
             <StyledTextField label="Last Name" className="text-field" name="lastName" />
             <StyledTextField label="Email" className="text-field" name="email" />
-            <RaisedButton label="Add" type="submit" backgroundColor="#e2231a"/>
+            <FlatButton 
+              label="Add" 
+              type="submit" 
+              labelStyle={styles.addLabelStyle} 
+              style={styles.flatButtonStyle}
+              backgroundColor="#e2231a"
+              hoverColor="#313131"
+            />
+            <FlatButton
+              label="Cancel"
+              onClick={this.handleClose}
+              style={styles.flatButtonStyle}
+              labelStyle={styles.cancelLabelStyle}
+            />
+
           </form>
         </Dialog>
       </div>
-    );
+    )
   }
 }
 

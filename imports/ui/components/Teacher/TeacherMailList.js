@@ -8,7 +8,6 @@ const styles = {
   style: {
     fontFamily:'"Ubuntu", sans-serif',
     borderRadius:'18px', 
-    // padding:'0 16px',
     marginLeft:'10px',
     fontSize:'0.7rem',
     height:'30px',
@@ -29,24 +28,26 @@ const TeacherMailList = ({allTeacherMessages, confirmationEmail}) => {
                   {message.sender[0].fullName} 
                   <span className="message-time-lighter">{moment(message.dateSent).format('LLL')}</span>
                   <span className="message-status-darker">
+
                     {message.status ? message.status : 
-                    <span className="message-buttons">
-                     
-                      <FlatButton 
-                        label="Approve" 
-                        backgroundColor='#e2e2e2' 
-                        style={styles.style} 
-                        onClick={(e) => confirmationEmail(e,message._id,'accept')}
-                      /> 
-                      <FlatButton 
-                        label="Decline" 
-                        backgroundColor='#e2e2e2' 
-                        
-                        style={styles.style} 
-                        onClick={(e) => confirmationEmail(e,message._id,'decline')}
-                      />
-                     
-                    </span>}
+                      <span className="message-buttons">
+                        <FlatButton 
+                          label="Approve" 
+                          backgroundColor='#e2e2e2' 
+                          hoverColor="#969696"
+                          style={styles.style} 
+                          onClick={(e) => confirmationEmail(e,message._id,'accept')}
+                        /> 
+                        <FlatButton 
+                          label="Decline" 
+                          backgroundColor='#e2e2e2' 
+                          hoverColor="#969696"
+                          style={styles.style} 
+                          onClick={(e) => confirmationEmail(e,message._id,'decline')}
+                        />
+                      </span>
+                    }
+                    
                   </span>
                 </p>
                 <p className="message-context">{message.message} </p> 
