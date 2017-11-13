@@ -78,7 +78,6 @@ class MessageContainer extends Component{
     const actions = [
       <FlatButton
         label="Cancel"
-        primary={true}
         onClick={this.handleClose}
         style={styles.flatButtonStyle}
         labelStyle={styles.cancelLabelStyle}
@@ -108,7 +107,6 @@ class MessageContainer extends Component{
           <form autoComplete="off" onSubmit={(e) => this.sendMessage(e)}>
             <StyledTextField label="Subject" className="text-field" name="subject" />
             <StyledTextField label="Message" className="text-field" name="message" />
-            
           </form>
         </Dialog>
       </div>

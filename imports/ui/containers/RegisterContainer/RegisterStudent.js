@@ -16,6 +16,19 @@ const styles = {
   labelStyle: {
     color:'#313131', 
     fontFamily:'"Ubuntu", sans-serif'
+  },
+  titleStyle: {
+    fontSize:'1rem',
+    fontFamily:'"Ubuntu", sans-serif',
+  },
+  flatButtonStyle: {
+    fontFamily:'"Ubuntu", sans-serif',
+    borderRadius:'18px',
+    padding:'0 16px',
+    margin: '0 15px 30px 0'
+  },
+  cancelLabelStyle:{
+    color:'#969696'
   }
 }
 
@@ -48,8 +61,9 @@ class RegisterContainer extends Component{
     const actions = [
       <FlatButton
         label="Cancel"
-        primary={true}
         onClick={this.handleClose}
+        style={styles.flatButtonStyle}
+        labelStyle={styles.cancelLabelStyle}
       />
     ];
 
@@ -62,19 +76,18 @@ class RegisterContainer extends Component{
           style={styles.style}/>
 
         <Dialog
-          title="Add new student:"
+          title="Add a new student"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          titleStyle={styles.titleStyle}
         >
           <form autoComplete="off" onSubmit={(e) => this.registerStudent(e)}>
             <StyledTextField label="First Name" className="text-field" name="firstName" />
-              <br />
             <StyledTextField label="Last Name" className="text-field" name="lastName" />
-              <br />
             <StyledTextField label="Email" className="text-field" name="email" />
-            <RaisedButton label="Add" primary={true} style={{ width: "95%" }} type="submit" />
+            <RaisedButton label="Add" type="submit" backgroundColor="#e2231a"/>
           </form>
         </Dialog>
       </div>

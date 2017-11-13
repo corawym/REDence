@@ -54,12 +54,12 @@ const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
             <TableRow selectable={false} key={student._id} style={styles.trStyle}>
               <TableRowColumn style={styles.tdLeftStyle}>{student.fullName}</TableRowColumn>
 
-              {/*<RadioButtonGroup>*/}
+
               <TableRowColumn style={styles.tdStyle}><input type="radio" value="attend" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'attend'}/> </TableRowColumn>
               <TableRowColumn style={styles.tdStyle}><input type="radio" value="late" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'late'}/></TableRowColumn>
               <TableRowColumn style={styles.tdStyle}><input type="radio" value="absent" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'absent'}/></TableRowColumn>
               <TableRowColumn style={styles.tdStyle}><input type="radio" value="exception" name={`group-${student._id}`} onClick={(e) => handleClick(e, student._id)} defaultChecked={student.status.status === 'exception'}/></TableRowColumn>
-              {/*</RadioButtonGroup>*/}
+
 
               <TableRowColumn style={styles.tdStyle}>{totalAtt.toFixed(2)}</TableRowColumn>
             </TableRow>
