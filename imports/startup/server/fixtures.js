@@ -19,23 +19,23 @@ Meteor.startup(() => {
   if (Programs.find().count() === 0){
 
     program1 = Programs.insert({ 
-      title: "Web Dev"
+      title: 'Web Dev'
     })
 
      Programs.insert({ 
-      title: "App Dev"
+      title: 'App Dev'
     })
 
      Programs.insert({ 
-      title: "UX Design"
+      title: 'UX Design'
     })
 
      Programs.insert({ 
-      title: "UI Design"
+      title: 'UI Design'
     })
 
      Programs.insert({ 
-      title: "Digital Marketing"
+      title: 'Digital Marketing'
     })
   }
 

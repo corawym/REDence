@@ -16,7 +16,7 @@ const styles = {
   },
   labelStyle: {
     color:'white', 
-    fontFamily:'"Ubuntu", sans-serif'
+    fontFamily:''Ubuntu', sans-serif'
   },
   submitButton: {
     borderRadius:'18px', 
@@ -30,7 +30,7 @@ const TeacherDashboard = ({ handleClick, submitAttendance, allAttendance, attend
   return (
     <div>
       
-      <div className="display-flex">
+      <div className='display-flex'>
         <MarkAttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Attendance</h2>
       </div>
@@ -39,9 +39,9 @@ const TeacherDashboard = ({ handleClick, submitAttendance, allAttendance, attend
       
       {attendanceSubmitted? false : <RegisterContainer />}
 
-      <div className="position-center">
+      <div className='position-center'>
         <FlatButton 
-          label="Submit" 
+          label='Submit' 
           labelStyle={styles.labelStyle}
           style={styles.submitButton}
           backgroundColor='#e2231a'
@@ -52,7 +52,7 @@ const TeacherDashboard = ({ handleClick, submitAttendance, allAttendance, attend
       
 
       <Divider style={styles.dividerStyle}/>
-      <div className="display-flex">
+      <div className='display-flex'>
         <MessageIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>
         <h2 className='dashboard-section-name'>Messages</h2>
       </div>

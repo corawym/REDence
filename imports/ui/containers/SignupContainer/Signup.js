@@ -7,7 +7,7 @@ import { Paper, FlatButton } from 'material-ui'
 import './styles.css'
 import { Teachers } from '../../../api/teacher'
 import { Programs } from '../../../api/program'
-import StyledTextField from "../../components/TextField/TextField"
+import StyledTextField from '../../components/TextField/TextField'
 
 
 const styles = {
@@ -17,11 +17,11 @@ const styles = {
   },
   labelStyle: {
     color:'white', 
-    fontFamily:'"Ubuntu", sans-serif'
+    fontFamily:''Ubuntu', sans-serif'
   },
   labelDisableStyle: {
     color:'#969696', 
-    fontFamily:'"Ubuntu", sans-serif'
+    fontFamily:''Ubuntu', sans-serif'
   }
 }
 
@@ -29,8 +29,8 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "a",
-      code: "meow"
+      value: 'a',
+      code: 'meow'
     }
   }
 
@@ -92,12 +92,12 @@ class Signup extends Component {
               <StyledTextField onChange={e => this.handleCode(e)} label='Teacher code' name='code' value={this.state.code} />
 
               <FlatButton 
-                disabled={this.state.code === "hi" ? false : true}
+                disabled={this.state.code === 'hi' ? false : true}
                 type='submit' 
                 fullWidth={true}
                 label='Sign up' 
-                labelStyle={this.state.code === "hi" ? styles.labelStyle : styles.labelDisableStyle } 
-                backgroundColor={this.state.code === "hi" ? '#e2231a' : '#f6f6f6'}
+                labelStyle={this.state.code === 'hi' ? styles.labelStyle : styles.labelDisableStyle } 
+                backgroundColor={this.state.code === 'hi' ? '#e2231a' : '#f6f6f6'}
                 hoverColor='#313131'
                 style={styles.style}
               />
