@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Table,
   TableBody,
@@ -7,7 +7,8 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-} from 'material-ui/Table';
+} from 'material-ui/Table'
+import moment from 'moment'
 
 
 const styles = {
@@ -49,7 +50,7 @@ const AttendanceList = ({missedDates, lateDates, sickDates}) => {
                 <TableRow selectable={false} key={index} style={styles.trStyle}>
                   <TableRowColumn>{index+1}</TableRowColumn>
                   <TableRowColumn style={styles.tdStyle}>Absent</TableRowColumn>
-                  <TableRowColumn style={styles.tdStyle}>{dates}</TableRowColumn>
+                  <TableRowColumn style={styles.tdStyle}>{moment(dates,"DD-MM-YYYY").format('LL')}</TableRowColumn>
                 </TableRow>
               )
             })
@@ -60,7 +61,7 @@ const AttendanceList = ({missedDates, lateDates, sickDates}) => {
                 <TableRow selectable={false} key={index} style={styles.trStyle}>
                   <TableRowColumn>{missedDates.length+index+1}</TableRowColumn>
                   <TableRowColumn style={styles.tdStyle}>Late</TableRowColumn>
-                  <TableRowColumn style={styles.tdStyle}>{dates}</TableRowColumn>
+                  <TableRowColumn style={styles.tdStyle}>{moment(dates,"DD-MM-YYYY").format('LL')}</TableRowColumn>
                 </TableRow>
               )
             })
@@ -71,7 +72,7 @@ const AttendanceList = ({missedDates, lateDates, sickDates}) => {
                 <TableRow selectable={false} key={index}>
                   <TableRowColumn>{lateDates.length+missedDates.length+index+1}</TableRowColumn>
                   <TableRowColumn style={styles.tdStyle}>Exception</TableRowColumn>
-                  <TableRowColumn style={styles.tdStyle}>{dates}</TableRowColumn>
+                  <TableRowColumn style={styles.tdStyle}>{moment(dates,"DD-MM-YYYY").format('LL')}</TableRowColumn>
                 </TableRow>
               )
             })
