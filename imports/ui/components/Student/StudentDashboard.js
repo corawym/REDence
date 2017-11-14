@@ -19,16 +19,12 @@ const styles = {
 
 const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessages}) => {
   let progressColor = null
-  if(totalAttendancePercent === 100){
-    progressColor = 'green'
-  } else if(totalAttendancePercent >= 97){
-    progressColor = 'yellow'
-  } else if(totalAttendancePercent >= 94){
-    progressColor = 'orange'
-  } else if(totalAttendancePercent >= 90){
-    progressColor = 'red'
+  if(totalAttendancePercent >= 95){
+    progressColor = '#969696'
+  } else if(totalAttendancePercent <= 95){
+    progressColor = '#e2231a'
   } else if(totalAttendancePercent < 90){
-    progressColor = 'black'
+    progressColor = '#e2e2e2'
   } 
   return(
     <div className="student-info-container">
@@ -36,7 +32,7 @@ const StudentDashboard = ({studentInfo, totalAttendancePercent, allStudentMessag
         <Avatar size={70} backgroundColor='#e2231a'>{studentInfo.fullName[0]}</Avatar>
         <div className="student-info-personal">
           <h1>{studentInfo.fullName}</h1>
-          <h2>{studentInfo.program[0].title} student<span> (program start date - finish date)</span></h2>      
+          <h2>{studentInfo.program[0].title} student<span> (October 2 - December 22, 2017)</span></h2>      
         </div>
       </div>
 
