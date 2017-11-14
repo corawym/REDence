@@ -142,8 +142,8 @@ Meteor.startup(() => {
   if(Messages.find().count() === 0 ){
 
     Messages.insert({
-      message: 'BOBBY IS NAT KEEEWL',
-      subject:'Bobby',
+      message: 'I will be late for 10 minutes because of the traffic.',
+      subject:'Will be late',
       sender: Students.find({ email: 'bobby@email.com' }).fetch(),
       receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
       dateSent:moment().format(),
@@ -151,8 +151,8 @@ Meteor.startup(() => {
     })
 
     Messages.insert({
-      message: 'CORA LOOOOVES DOGS',
-      subject:'Cora',
+      message: 'I am unable to attend class on December 1, 2017 due to family illness.',
+      subject:'Absence Excuse',
       sender: Students.find({ email: 'cora@email.com' }).fetch(),
       receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
       dateSent:moment().format(),
@@ -160,8 +160,8 @@ Meteor.startup(() => {
     })
 
     Messages.insert({
-      message: 'MARK HAS TOO MANY LATES',
-      subject:'Mark',
+      message: 'I needed to have my leg set after an injury in my baseball game the previous night. I will show you the documentation from the pediatric orthopedist.',
+      subject:'Leg injury',
       sender: Students.find({ email: 'mark@email.com' }).fetch(),
       receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
       dateSent:moment().format(),
