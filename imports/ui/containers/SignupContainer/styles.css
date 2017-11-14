@@ -1,0 +1,9 @@
+/* Style - signup */
+/* mostly reuse css from login */
+.signup-page{
+  height: auto;
+}
+
+.signup-footer{
+  margin-bottom: 3rem;
+}

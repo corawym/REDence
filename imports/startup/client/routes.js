@@ -9,7 +9,6 @@ import Dashboard from '../../ui/containers/DashboardContainer/Dashboard'
 const Routes = () => (
   <Router>
       <Switch>
-        {/* <Login /> */}
         <Route exact path='/' component={Dashboard}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>

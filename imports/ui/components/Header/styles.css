@@ -1,0 +1,41 @@
+.header-wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  padding: 0 20px;
+}
+
+/* Style - Leftside */
+.header-leftside h1{
+  margin: 14px 0 0 0 ;
+  color: #e2231a;
+}
+
+.header-leftside span{
+  color: #969696;
+}
+
+/* Style - Rightside */
+.header-rightside{
+  display: flex;
+  margin-top: 15px;
+}
+
+.header-rightside p{
+  font-size: 1rem;
+  margin: 0 20px;
+  padding-top: 11px;
+  color: #313131;
+  display: none;
+}
+
+/* Tablet view */
+@media screen and (min-width: 560px) {
+  .header-rightside p{
+    display: block;
+  }
+}
+
