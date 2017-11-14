@@ -29,6 +29,8 @@ const styles = {
 const TeacherDashboard = ({ handleClick, submitAttendance, allAttendance, attendanceSubmitted, updateAttendance,allTeacherMessages, confirmationEmail}) => {
   return (
     <div>
+
+      
       
       <div className="display-flex">
         <MarkAttendanceIcon color='#e2231a' style={{width:'50px', height:'50px'}}/>

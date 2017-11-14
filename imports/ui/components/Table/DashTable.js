@@ -7,8 +7,6 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-  // RadioButton, 
-  // RadioButtonGroup
 } from 'material-ui/Table';
 
 
@@ -37,6 +35,7 @@ const styles = {
 
 const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
   return (
+
     <Table allRowsSelected={false} bodyStyle={styles.bodyStyle} style={styles.style}>
       <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={{border:'none'}}>
         <TableRow style={styles.trStyle}>
@@ -66,6 +65,7 @@ const DashTable = ({ tableHeaderColumn, allAttendance, handleClick }) => {
         })}
       </TableBody>
     </Table>
+
   )
 }
 
