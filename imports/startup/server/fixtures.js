@@ -160,7 +160,7 @@ Meteor.startup(() => {
     })
 
     Messages.insert({
-      message: 'I needed to have his leg set after an injury in my baseball game the previous night. I will show you the documentation from the pediatric orthopedist.',
+      message: 'I needed to have my leg set after an injury in my baseball game the previous night. I will show you the documentation from the pediatric orthopedist.',
       subject:'Leg injury',
       sender: Students.find({ email: 'mark@email.com' }).fetch(),
       receiver: Teachers.find({ programs: { $elemMatch: { title: 'App Dev' } } }).fetch(),
