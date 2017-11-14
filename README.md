@@ -1,5 +1,5 @@
 # REDence App
-This app allows teachers of REDAcademy the ability to mark their students' attendance. It also allows the students to be able to look at their attendance to get an idea on where they stand on their attendance. Before this app, they way teachers mark their students' attendance was using an excel sheet and the students would have to ask their teachers directly to find out their own attendance. All that hassle has been removed by this app. 
+This app allows teachers of REDAcademy the ability to mark their students' attendance. It also allows the students to be able to look at their attendance to get an idea on where they stand on their attendance. Before this app, the way teachers mark their students' attendance was using an excel sheet and the students would have to ask their teachers directly to find out their own attendance. All that hassle has been removed by this app. 
 
 Some other cool features:
 * Ability to send messages to the respective teachers
@@ -16,6 +16,7 @@ Future features:
 * [HTML](http://html.com/)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 
 * [JavaScript](https://www.javascript.com/) 
+* [MongoDB](https://www.mongodb.com/)
 
 
 ## Installation
